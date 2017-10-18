@@ -1,66 +1,4 @@
-CREATE TABLE addresses
-(
-    id INTEGER DEFAULT nextval('addresses_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    address_line_1 VARCHAR(128) NOT NULL,
-    address_line_2 VARCHAR(64),
-    address_line_3 VARCHAR(64),
-    city VARCHAR(64) NOT NULL,
-    state_id INTEGER,
-    district VARCHAR(128),
-    country_id INTEGER NOT NULL,
-    postcode VARCHAR(16) NOT NULL
-    CONSTRAINT addresses_countries___fk FOREIGN KEY (country_id) REFERENCES ref_countries (sk_country),
-    CONSTRAINT addresses_states___fk FOREIGN KEY (state_id) REFERENCES ref_us_states (id)
-);
-COMMENT ON COLUMN addresses.district IS 'US state, Canada province, UK county, etc.';
-COMMENT ON COLUMN addresses.state_id IS 'for United States only';
-CREATE UNIQUE INDEX addresses_id_uindex ON addresses (id);
-
-
-CREATE TABLE categories
-(
-    id INTEGER DEFAULT nextval('categories_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    name VARCHAR(32) NOT NULL
-);
-COMMENT ON COLUMN categories.name IS 'To categorize types of help needed: food, shelter, pet shelter, clothes, cleaning, construction, find and rescue, psychological, legal support, communication support, safeguard ';
-CREATE UNIQUE INDEX categories_id_uindex ON categories (id);
-
-
-CREATE TABLE posts
-(
-    id INTEGER DEFAULT nextval('posts_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    user_id INTEGER NOT NULL,
-    title VARCHAR(32) NOT NULL,
-    description VARCHAR(512),
-    responses_count INTEGER,
-    status BOOLEAN DEFAULT false,
-    category_id INTEGER NOT NULL,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
-    deleted_at TIMESTAMP,
-    CONSTRAINT posts_users___fk FOREIGN KEY (user_id) REFERENCES users (id),
-    CONSTRAINT posts_categories___fk FOREIGN KEY (category_id) REFERENCES categories (id)
-);
-COMMENT ON COLUMN posts.status IS 'for indication ''open'' (0) / ''closed'' (1)';
-CREATE UNIQUE INDEX posts_id_uindex ON posts (id);
-
-
-CREATE TABLE ref_countries
-(
-    sk_country INTEGER PRIMARY KEY NOT NULL,
-    number INTEGER NOT NULL,
-    alpha2code CHAR(2) NOT NULL,
-    alpha3code CHAR(3) NOT NULL,
-    country_name VARCHAR(255) NOT NULL,
-    topleveldomain CHAR(3) NOT NULL
-);
-COMMENT ON COLUMN ref_countries.number IS 'The ISO Country Numerical code';
-COMMENT ON COLUMN ref_countries.alpha2code IS 'The 2 character ISO Country code';
-COMMENT ON COLUMN ref_countries.alpha3code IS 'The 3 character ISO country code';
-COMMENT ON COLUMN ref_countries.country_name IS 'The English name of the country';
-COMMENT ON COLUMN ref_countries.topleveldomain IS 'Top level domain of the country. Mostly, but not always the same as the Alpha2Code';
-
-
+-- 01 Reference table LANGUAGES
 CREATE TABLE ref_languages
 (
     "SK_Language" INTEGER PRIMARY KEY NOT NULL,
@@ -87,9 +25,27 @@ COMMENT ON COLUMN ref_languages."MacrolanguageName" IS 'The name of the parent l
 COMMENT ON COLUMN ref_languages.is_child IS '1 if this is a child language, 0 otherwise';
 
 
+-- 02 Reference table COUNTRIES
+CREATE TABLE ref_countries
+(
+    sk_country INTEGER PRIMARY KEY NOT NULL,
+    number INTEGER NOT NULL,
+    alpha2code CHAR(2) NOT NULL,
+    alpha3code CHAR(3) NOT NULL,
+    country_name VARCHAR(255) NOT NULL,
+    topleveldomain CHAR(3) NOT NULL
+);
+COMMENT ON COLUMN ref_countries.number IS 'The ISO Country Numerical code';
+COMMENT ON COLUMN ref_countries.alpha2code IS 'The 2 character ISO Country code';
+COMMENT ON COLUMN ref_countries.alpha3code IS 'The 3 character ISO country code';
+COMMENT ON COLUMN ref_countries.country_name IS 'The English name of the country';
+COMMENT ON COLUMN ref_countries.topleveldomain IS 'Top level domain of the country. Mostly, but not always the same as the Alpha2Code';
+
+
+-- 03 Reference table US STATES
 CREATE TABLE ref_us_states
 (
-    id INTEGER DEFAULT nextval('us_states_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(64) NOT NULL,
     abbreviation CHAR(2) NOT NULL
 );
@@ -97,24 +53,39 @@ CREATE UNIQUE INDEX us_states_id_uindex ON ref_us_states (id);
 CREATE UNIQUE INDEX us_states_abbreviation_uindex ON ref_us_states (abbreviation);
 
 
-CREATE TABLE responses
+-- 04 Table TAGS
+CREATE TABLE tags
 (
-    id INTEGER DEFAULT nextval('responses_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    user_id INTEGER NOT NULL,
-    post_id INTEGER NOT NULL,
-    comment VARCHAR(256) NOT NULL,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
-    deleted_at TIMESTAMP,
-    CONSTRAINT responses_users___fk FOREIGN KEY (user_id) REFERENCES users (id),
-    CONSTRAINT responses_posts___fk FOREIGN KEY (post_id) REFERENCES posts (id)
+    id SERIAL PRIMARY KEY,
+    tag_name VARCHAR(32) NOT NULL
 );
-CREATE UNIQUE INDEX responses_id_uindex ON responses (id);
+CREATE UNIQUE INDEX tags_id_uindex ON tags (id);
 
 
+-- 05 Table ADDRESSES
+CREATE TABLE addresses
+(
+    id SERIAL PRIMARY KEY,
+    address_line_1 VARCHAR(128) NOT NULL,
+    address_line_2 VARCHAR(64),
+    address_line_3 VARCHAR(64),
+    city VARCHAR(64) NOT NULL,
+    district VARCHAR(128),
+    country_id INTEGER NOT NULL,
+    postcode VARCHAR(16) NOT NULL,
+    state_id INTEGER,
+    CONSTRAINT addresses_countries___fk FOREIGN KEY (country_id) REFERENCES ref_countries (sk_country),
+    CONSTRAINT addresses_states___fk FOREIGN KEY (state_id) REFERENCES ref_us_states (id)
+);
+COMMENT ON COLUMN addresses.district IS 'US state, Canada province, UK county, etc.';
+COMMENT ON COLUMN addresses.state_id IS 'for United States only';
+CREATE UNIQUE INDEX addresses_id_uindex ON addresses (id);
+
+
+-- 06 Table USERS
 CREATE TABLE users
 (
-    id INTEGER DEFAULT nextval('users_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY,
     email VARCHAR(256) NOT NULL,
     password_hash CHAR(60) NOT NULL,
     dob DATE NOT NULL,
@@ -132,3 +103,51 @@ COMMENT ON COLUMN users.dob IS 'date of birth';
 CREATE UNIQUE INDEX users_id_uindex ON users (id);
 CREATE UNIQUE INDEX users_email_uindex ON users (email);
 CREATE UNIQUE INDEX users_password_hash_uindex ON users (password_hash);
+
+
+-- 07 Table POSTS
+CREATE TABLE posts
+(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    title VARCHAR(32) NOT NULL,
+    description VARCHAR(512),
+    responses_count INTEGER,
+    status BOOLEAN DEFAULT false,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    deleted_at TIMESTAMP,
+    category_id INTEGER NOT NULL,
+    CONSTRAINT posts_users___fk FOREIGN KEY (user_id) REFERENCES users (id)
+);
+COMMENT ON COLUMN posts.status IS 'for indication ''open'' (0) / ''closed'' (1)';
+CREATE UNIQUE INDEX posts_id_uindex ON posts (id);
+
+
+-- 08 Table POSTS_TAGS
+CREATE TABLE posts_tags
+(
+    id SERIAL PRIMARY KEY,
+    post_id INTEGER NOT NULL,
+    tag_id INTEGER NOT NULL,
+    CONSTRAINT posts_tags_posts___fk FOREIGN KEY (post_id) REFERENCES posts (id),
+    CONSTRAINT posts_tags_tags___fk FOREIGN KEY (tag_id) REFERENCES tags (id)
+);
+CREATE UNIQUE INDEX posts_tags_id_uindex ON posts_tags (id);
+
+
+-- 09 Table RESPONSES
+CREATE TABLE responses
+(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    post_id INTEGER NOT NULL,
+    comment VARCHAR(256) NOT NULL,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    deleted_at TIMESTAMP,
+    CONSTRAINT responses_users___fk FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT responses_posts___fk FOREIGN KEY (post_id) REFERENCES posts (id)
+);
+CREATE UNIQUE INDEX responses_id_uindex ON responses (id);
+
