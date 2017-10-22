@@ -93,6 +93,7 @@ CREATE TABLE users
     first_name VARCHAR(64) NOT NULL,
     last_name VARCHAR(64) NOT NULL,
     address_id INTEGER NOT NULL,
+    userpic BYTEA,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     CONSTRAINT users_addresses___fk FOREIGN KEY (address_id) REFERENCES addresses (id)
