@@ -87,7 +87,7 @@ CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
     email VARCHAR(256) NOT NULL,
-    password_hash CHAR(60) NOT NULL,
+    password_hash VARCHAR(60) NOT NULL,
     dob DATE NOT NULL,
     phone VARCHAR(32) NOT NULL,
     first_name VARCHAR(64) NOT NULL,
@@ -113,42 +113,47 @@ CREATE TABLE posts
     user_id INTEGER NOT NULL,
     title VARCHAR(32) NOT NULL,
     description VARCHAR(512),
-    responses_count INTEGER,
-    status BOOLEAN DEFAULT false,
+    total_requests INTEGER,
+    is_open BOOLEAN DEFAULT true,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     deleted_at TIMESTAMP,
-    category_id INTEGER NOT NULL,
     CONSTRAINT posts_users___fk FOREIGN KEY (user_id) REFERENCES users (id)
 );
-COMMENT ON COLUMN posts.status IS 'for indication ''open'' (0) / ''closed'' (1)';
+COMMENT ON COLUMN posts.is_open IS 'for indication open/closed';
 CREATE UNIQUE INDEX posts_id_uindex ON posts (id);
 
 
--- 08 Table POSTS_TAGS
-CREATE TABLE posts_tags
+-- 08 Table POST_ITEMS
+CREATE TABLE post_items
 (
     id SERIAL PRIMARY KEY,
     post_id INTEGER NOT NULL,
     tag_id INTEGER NOT NULL,
-    CONSTRAINT posts_tags_posts___fk FOREIGN KEY (post_id) REFERENCES posts (id),
-    CONSTRAINT posts_tags_tags___fk FOREIGN KEY (tag_id) REFERENCES tags (id)
-);
-CREATE UNIQUE INDEX posts_tags_id_uindex ON posts_tags (id);
-
-
--- 09 Table RESPONSES
-CREATE TABLE responses
-(
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
-    post_id INTEGER NOT NULL,
-    comment VARCHAR(256) NOT NULL,
+    request_count INTEGER,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     deleted_at TIMESTAMP,
-    CONSTRAINT responses_users___fk FOREIGN KEY (user_id) REFERENCES users (id),
-    CONSTRAINT responses_posts___fk FOREIGN KEY (post_id) REFERENCES posts (id)
+    CONSTRAINT post_items__posts___fk FOREIGN KEY (post_id) REFERENCES posts (id),
+    CONSTRAINT post_items__tags___fk FOREIGN KEY (tag_id) REFERENCES tags (id)
 );
-CREATE UNIQUE INDEX responses_id_uindex ON responses (id);
+COMMENT ON COLUMN post_items.request_count IS 'for how many persons this kind of help [tag] is requested OR how many [tag] items (cars, workers, boats, etc.)';
+CREATE UNIQUE INDEX post_items_id_uindex ON post_items (id);
+
+
+-- 09 Table OFFERS
+CREATE TABLE offers
+(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    post_item_id INTEGER NOT NULL,
+    comment VARCHAR(256) NOT NULL,
+    status INTEGER NOT NULL,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    deleted_at TIMESTAMP,
+    CONSTRAINT offers_users___fk FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT offers__post_items___fk FOREIGN KEY (post_item_id) REFERENCES post_items (id)
+);
+CREATE UNIQUE INDEX offers_id_uindex ON offers (id);
 
