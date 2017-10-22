@@ -7,6 +7,9 @@
   "author": "Eun-jung Park; Naief Perez Secin; Maria Romanova",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "node_modules/.bin/nodemon -L app.js"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "sequelize": "^4.15.1"
@@ -16,6 +19,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint-plugin-react": "^7.4.0",
+    "nodemon": "^1.12.1"
   }
 }
