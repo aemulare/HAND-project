@@ -1,0 +1,14 @@
+{
+  "name": "hand-app",
+  "version": "1.0.0",
+  "description": "Hand After Natural Disasters. Social platform.",
+  "main": "app.js",
+  "repository": "https://github.com/aemulare/HAND-project",
+  "author": "Eun-jung Park; Naief Perez Secin; Maria Romanova",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.2",
+    "sequelize": "^4.15.1"
+  }
+}
