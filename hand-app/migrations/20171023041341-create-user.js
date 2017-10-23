@@ -14,14 +14,14 @@ module.exports = {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    firstName: {
+    first_name: {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    middleName: {
+    middle_name: {
       type: DataTypes.STRING,
     },
-    lastName: {
+    last_name: {
       allowNull: false,
       type: DataTypes.STRING,
     },
@@ -40,11 +40,11 @@ module.exports = {
     userpic: {
       type: DataTypes.BLOB,
     },
-    createdAt: {
+    created_at: {
       allowNull: false,
       type: DataTypes.DATE,
     },
-    updatedAt: {
+    updated_at: {
       allowNull: false,
       type: DataTypes.DATE,
     },
