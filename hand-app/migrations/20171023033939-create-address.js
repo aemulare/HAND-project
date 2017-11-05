@@ -23,7 +23,6 @@ module.exports = {
     },
     state_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'us_states',
         key: 'id',
