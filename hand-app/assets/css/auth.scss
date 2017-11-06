@@ -18,33 +18,38 @@ div#hand-brand {
   margin: 0 auto;
 }
 
-h1 {
+h1.sign-intro {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 2em;
   font-weight: 700;
   line-height: 1.5em;
+  color: #9B9B9B;
 }
 
 form#sign-up {
   margin: 20px 0;
 }
 
-button {
+
+.btn-auth {
   width: 450px;
   margin: 10px 0;
 }
 
-// .btn {
-//   margin-bottom: 10px;
-// }
-
-p {
+a.help-question,
+p.help-question {
   display: block;
   text-align: center;
 }
 
 .control-group {
   margin: 30px 0;
+}
+
+
+.center-block {
+  margin-right: auto !important;
+  margin-left: auto !important;
 }
 
