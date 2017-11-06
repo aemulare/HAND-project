@@ -22,36 +22,63 @@
         <form id="sign-up" name="sign-up" action="/sign-up" method="post" autocomplete="off">
 
           <!-- User email -->
-          <div class="input-group col-xs-12 col-sm-4 col-sm-offset-4">
-            <span class="input-group-addon">
-              <i class="fa fa-user"></i>
-            </span>
-            <input type="text" class="form-control" name="email" maxlength="9" id="email" placeholder="email">
+          <div class="row control-group">
+            <div class="input-group col-xs-12 col-sm-4 col-sm-offset-4">
+              <span class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </span>
+              <input type="text" class="form-control" name="email" maxlength="9" id="email" placeholder="email">
+              <span class="help-block text-danger"></span>
+            </div>
           </div>
-          <span class="help-block"></span>
+
+
 
           <!-- User password -->
-          <div class="input-group col-xs-12 col-sm-4 col-sm-offset-4">
-            <span class="input-group-addon">
-              <i class="fa fa-lock"></i>
-            </span>
-            <input type="text" class="form-control" name="password" maxlength="9" id="password" placeholder="password">
+          <div class="row control-group">
+            <div class="input-group col-xs-12 col-sm-4 col-sm-offset-4">
+              <span class="input-group-addon">
+                <i class="fa fa-lock"></i>
+              </span>
+              <input type="text" class="form-control" name="password" maxlength="9" id="password" placeholder="password">
+              <span class="help-block text-danger"></span>
+            </div>
           </div>
-          <span class="help-block"></span>
+
+
 
           <!-- User password confirmation -->
-          <div class="input-group col-xs-12 col-sm-4 col-sm-offset-4">
-            <span class="input-group-addon">
-              <i class="fa fa-lock"></i>
-            </span>
-            <input type="text" class="form-control" name="password-confirm" maxlength="9" id="password-confirm" placeholder="confirm password">
+          <div class="row control-group">
+            <div class="input-group col-xs-12 col-sm-4 col-sm-offset-4">
+              <span class="input-group-addon">
+                <i class="fa fa-lock"></i>
+              </span>
+              <input type="text" class="form-control" name="password-confirm" maxlength="9" id="password-confirm" placeholder="confirm password">
+              <span class="help-block text-danger"></span>
+            </div>
           </div>
-          <span class="help-block"></span>
+
+
 
           <!-- Register button -->
-          <button class="btn btn-lg btn-primary center-block" type="submit" id="register">Register</button>
-          <a href="#">Already have an account?</a>
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <button class="btn btn-lg btn-primary center-block" type="submit" id="register">Register</button>
+            </div>
+          </div>
 
+          <div class="row">
+            <div class="col-xs-12">
+              <p href="#">Already have an account?</p>
+            </div>
+          </div>
+
+          <!-- Login button -->
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <button class="btn btn-lg btn-default center-block" type="button" id="login">Login</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
