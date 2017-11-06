@@ -52,6 +52,20 @@
   margin-right: 0px;
 }
 
+
+#footer-wrapper {
+  position: absolute;
+  padding: 15px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+#wrapper.toggled #footer-wrapper {
+  position: relative;
+  margin-right: 0px;
+}
+
 .fixed-brand {
   width: auto;
 }
@@ -136,6 +150,14 @@
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
+  #footer-wrapper {
+    padding: 20px;
+    position: relative;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
   #wrapper {
     &.toggled #page-content-wrapper {
       position: relative;
@@ -152,12 +174,27 @@
       transition: all 0.5s ease;
       width: auto;
     }
+    &.toggled #pfooter-wrapper {
+      position: relative;
+      margin-right: 0;
+      padding-left: 250px;
+    }
+    &.toggled-2 #footer-wrapper {
+      position: relative;
+      bottom: 0;
+      margin-right: 0;
+      margin-left: -200px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      width: auto;
+    }
   }
 }
 
 
-// non-toggled styles
-
+/* Non Toggle Styles */
 .navbar {
   min-height: 100px;
 }
@@ -165,8 +202,25 @@
 
 button#menu-toggle,
 button#menu-toggle-2 {
-  // background-color: aqua;
   margin-top: 20px;
   margin-left: 10px;
 }
 
+div.breadcrumbs {
+  font-size: 0.8em;
+}
+
+
+
+
+
+.footer {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  // line-height: 30px;
+  background-color: aqua;
+  overflow: hidden;
+}
