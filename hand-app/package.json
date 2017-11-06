@@ -8,7 +8,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node_modules/.bin/nodemon -L app.js"
+    "start": "node_modules/.bin/nodemon -L app.js",
+    "watch": "webpack --watch & webpack-dev-server --inline --content-base ./assets --progress",
+    "build": "webpack --progress --profile"
   },
   "dependencies": {
     "ejs": "^2.5.7",
