@@ -4,11 +4,13 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const env = require('dotenv').load();
+const authRoute = require('./app/routes/auth.js');
 
 const app = express();
 
 
 const PORT = process.env.PORT || 3000;
+authRoute(app);
 
 // Configures body-parser.
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,9 +33,6 @@ app.set('view engine', 'ejs');
 // Configures public assets folder.
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/signup', (req, res) => {
-  res.render('sign-up');
-});
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
