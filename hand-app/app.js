@@ -3,6 +3,7 @@ const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const env = require('dotenv').load();
 
 const app = express();
 
