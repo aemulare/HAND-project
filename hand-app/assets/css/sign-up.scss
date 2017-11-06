@@ -1,0 +1,41 @@
+/* SIGN UP PAGE STYLE */
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img#hand-logo {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+div#hand-brand {
+  background-color: aqua;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+form#sign-up {
+  margin: 20px 0;
+}
+
+button {
+  width: 450px;
+  margin: 10px 0;
+}
+
+a {
+  text-align: center;
+}
+
