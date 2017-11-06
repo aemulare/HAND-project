@@ -5,12 +5,14 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const env = require('dotenv').load();
 const authRoute = require('./app/routes/auth.js');
+const homeRoute = require('./app/routes/home.js');
 
 const app = express();
 
 
 const PORT = process.env.PORT || 3000;
 authRoute(app);
+homeRoute(app);
 
 // Configures body-parser.
 app.use(bodyParser.urlencoded({ extended: true }));
