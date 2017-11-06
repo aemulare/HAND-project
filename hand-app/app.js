@@ -14,7 +14,17 @@ app.get('/signup', (req, res) => {
   res.render('sign-up');
 });
 
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-app.listen(PORT, () => {
+
+app.listen(PORT, (err) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
   console.log(`Server is up and running on port ${PORT}`);
 });
