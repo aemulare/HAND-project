@@ -15,23 +15,19 @@ module.exports = {
       type: DataTypes.STRING,
     },
     first_name: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     middle_name: {
       type: DataTypes.STRING,
     },
     last_name: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     dob: {
-      allowNull: false,
       type: DataTypes.DATE,
     },
     address_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'addresses',
         key: 'id',
