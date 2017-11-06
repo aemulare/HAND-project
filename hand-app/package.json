@@ -13,8 +13,10 @@
     "build": "webpack --progress --profile"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "font-awesome": "^4.7.0",
     "pg": "^7.3.0",
     "sequelize": "^4.15.1"
   },
