@@ -154,3 +154,19 @@
     }
   }
 }
+
+
+// non-toggled styles
+
+.navbar {
+  min-height: 100px;
+}
+
+
+button#menu-toggle,
+button#menu-toggle-2 {
+  // background-color: aqua;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
