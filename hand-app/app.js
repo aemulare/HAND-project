@@ -25,7 +25,7 @@ app.use(passport.session());
 
 
 // Configures views.
-app.set('views', path.resolve(__dirname, 'views/sign-up'));
+app.set('views', path.join(__dirname, 'app', 'views'));
 app.set('view engine', 'ejs');
 
 // Configures public assets folder.
