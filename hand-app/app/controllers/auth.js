@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('../../config/passport');
 const db = require('../models');
 
 const router = express.Router();
@@ -20,18 +21,25 @@ router.get('/signin', (req, res) => {
 router.post('/signup', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  const passwordConfirmation = req.body.password_confirm;
 
   db.users.create({
     email,
     password,
   })
-    .then(() => {
-      res.redirect('/');
+    .then((user) => {
+      req.login(user, () => res.redirect('/'));
     })
     .catch((err) => {
       console.log(err);
-      res.redirect('/signup');
+      res.render('signup');
     });
+});
+
+
+router.post('/signin', (req, res) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/signin',
+  })(req, res);
 });
 
