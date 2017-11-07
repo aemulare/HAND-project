@@ -1,6 +1,6 @@
 const express = require('express');
 const glob = require('glob');
-// const favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 const logger = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -20,7 +20,7 @@ module.exports = (app, config) => {
   app.set('views', `${config.root}/app/views`);
   app.set('view engine', 'ejs');
 
-  // app.use(favicon(config.root + '/public/img/favicon.ico'));
+  app.use(favicon(`${config.root}/public/img/hand_heart.ico`));
   app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
