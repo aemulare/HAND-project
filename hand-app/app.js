@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const logger = require('morgan');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -17,6 +18,7 @@ homeRoute(app);
 // Configures body-parser.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(logger('dev'));
 
 // Configures sessions and passport.
 app.use(session({
