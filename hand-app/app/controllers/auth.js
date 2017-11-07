@@ -24,7 +24,7 @@ router.post('/signup', (req, res) => {
 
   db.users.create({
     email,
-    passwordHash: 'kvakvakva',
+    password,
   })
     .then(() => {
       res.redirect('/');
