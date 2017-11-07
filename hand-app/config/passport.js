@@ -26,7 +26,7 @@ const strategy = new LocalStrategy(
       console.log('\n\nCorrect login!!\n\n');
       return done(null, user, { message: 'Successfully Logged In!' });
     });
-  },
+  }
 );
 
 passport.use(strategy);
