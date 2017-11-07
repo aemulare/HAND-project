@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     dob: DataTypes.DATE,
     userpic: DataTypes.BLOB,
   }, {
-    undercored: true,
-    timestamps: false,
+    underscored: true,
   });
 
   User.associate = db => User.belongsTo(db.addresses);
