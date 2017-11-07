@@ -1,42 +1,55 @@
 const bcrypt = require('bcrypt-nodejs');
-const passportLocal = require('passport-local');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const db = require('../app/models');
 
-module.exports = (passport, user) => {
-  const User = user;
-  const LocalStrategy = passportLocal.Strategy;
 
-  passport.use('local-signup', new LocalStrategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password',
-      passReqToCallback: true,
-    },
+function passwordsMatch(submitted, stored) {
+  return bcrypt.compareSync(submitted, stored);
+}
 
-    (req, email, password, done) => {
-      const generateHash = pwd => bcrypt.hashSync(pwd, bcrypt.genSaltSync(8), null);
+const strategy = new LocalStrategy(
+  { usernameField: 'email' },
+  (email, password, done) => {
+    db.users.findOne({
+      where: { email },
+    }).then((user) => {
+      if (!user) {
+        return done(null, false, { message: 'Incorrect email.' });
+      }
 
-      User.findOne({
-        where: { email },
-      })
-        .then((existingUser) => {
-          if (existingUser) {
-            return done(null, false, { message: 'That email is already token' });
-          }
+      if (passwordsMatch(password, user.password) === false) {
+        console.log('\n\nError match\n\n');
+        return done(null, false, { message: 'Incorrect password.' });
+      }
 
-          const userPassword = generateHash(password);
-          const data = {
-            email,
-            pasword: userPassword,
-          };
+      console.log('\n\nCorrect login!!\n\n');
+      return done(null, user, { message: 'Successfully Logged In!' });
+    });
+  },
+);
 
-          User.create(data)
-            .then((newUser, created) => {
-              if (!newUser) {
-                return done(null, false);
-              }
-              return done(null, newUser);
-            });
-        });
-    },
-  ));
-};
+passport.use(strategy);
+
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+
+passport.deserializeUser((id, done) => {
+  db.users.findById(id).then((user) => {
+    if (!user) {
+      return done(null, false);
+    }
+    return done(null, user);
+  });
+});
+
+passport.redirectIfLoggedIn = route =>
+  (req, res, next) => (req.user ? res.redirect(route) : next());
+
+passport.redirectIfNotLoggedIn = route =>
+  (req, res, next) => (req.user ? next() : res.redirect(route));
+
+module.exports = passport;
