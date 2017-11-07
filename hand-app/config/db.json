@@ -1,0 +1,23 @@
+{
+  "development": {
+    "host": "localhost",
+    "database": "hand_development",
+    "dialect": "postgres",
+    "username": "hand",
+    "password": "disaster"
+  },
+  "test": {
+    "host": "localhost",
+    "database": "hand_test",
+    "dialect": "postgres",
+    "username": "hand",
+    "password": "disaster"
+  },
+  "production": {
+    "host": "localhost",
+    "database": "hand_production",
+    "dialect": "postgres",
+    "username": "hand",
+    "password": "disaster"
+  }
+}

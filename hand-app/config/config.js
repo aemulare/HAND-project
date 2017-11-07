@@ -8,19 +8,16 @@ const config = {
     root: rootPath,
     app: { name: 'hand-app' },
     port: process.env.PORT || 3000,
-    db: 'postgres://localhost/hand_development',
   },
   test: {
     root: rootPath,
     app: { name: 'hand-app' },
     port: process.env.PORT || 3000,
-    db: 'postgres://localhost/hand_test',
   },
   production: {
     root: rootPath,
     app: { name: 'hand-app' },
     port: process.env.PORT || 3000,
-    db: 'postgres://localhost/hand_production',
   },
 };
 
