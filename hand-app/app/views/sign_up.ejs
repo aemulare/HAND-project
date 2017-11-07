@@ -19,7 +19,7 @@
       </div>
       <div class="col-xs-12">
         <!-- USER REGISTRATION FORM -->
-        <form id="sign-up" name="sign-up" action="/sign-up" method="post" autocomplete="off">
+        <form class="auth" name="sign_up" action="/sign-up" method="post" autocomplete="off">
 
           <!-- User email -->
           <div class="row control-group">
@@ -27,7 +27,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-user"></i>
               </span>
-              <input type="text" class="form-control" name="email" maxlength="9" id="email" placeholder="email">
+              <input type="text" class="form-control" name="email" id="email" placeholder="email">
               <span class="help-block text-danger"></span>
             </div>
           </div>
@@ -38,7 +38,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-lock"></i>
               </span>
-              <input type="text" class="form-control" name="password" maxlength="9" id="password" placeholder="password">
+              <input type="text" class="form-control" name="password" maxlength="12" id="password" placeholder="password">
               <span class="help-block text-danger"></span>
             </div>
           </div>
@@ -49,7 +49,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-lock"></i>
               </span>
-              <input type="text" class="form-control" name="password-confirm" maxlength="9" id="password-confirm" placeholder="confirm password">
+              <input type="text" class="form-control" name="password_confirm" maxlength="12" id="password-confirm" placeholder="confirm password">
               <span class="help-block text-danger"></span>
             </div>
           </div>
