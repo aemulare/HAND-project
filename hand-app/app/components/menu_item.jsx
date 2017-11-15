@@ -3,11 +3,13 @@ import '../assets/styles/app.css';
 
 class MenuItem extends Component {
   render() {
+    const Icon = this.props.icon;
+
     return (
       <li className={this.props.active ? 'active' : null}>
         <a href="#">
-          <span className="fa-stack fa-lg pull-left">
-            <i className={`fa ${this.props.icon} fa-stack-1x`} />
+          <span className="pull-left">
+            <Icon size={24} />
           </span>
           {this.props.label}
         </a>
