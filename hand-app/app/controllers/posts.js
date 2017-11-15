@@ -9,19 +9,38 @@ module.exports = (app) => {
 
 // GET index
 router.get('/', (req, res) => {
-  res.json({ text: 'GET index action is called' });
+  db.posts.findAll()
+    .then((posts) => {
+      res.json(posts);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ code: 500, message: 'Internal server error' });
+    });
 });
 
 
 // GET show
 router.get('/:postId', (req, res) => {
-  res.json({ text: 'GET show action is called' });
+  const { postId } = req.params;
+
+  db.posts.findById(postId)
+    .then((post) => {
+      if (post) {
+        res.json(post);
+      } else {
+        res.status(404).json({ code: 404, message: 'Post not found' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ code: 500, message: 'Internal server error' });
+    });
 });
 
 
 // POST create
 router.post('/', (req, res) => {
-  res.json({ text: 'POST create action is called' });
   const { title, description, userId } = req.body;
 
   db.posts.create({
@@ -42,11 +61,47 @@ router.post('/', (req, res) => {
 
 // PUT update
 router.put('/:postId', (req, res) => {
-  res.json({ text: 'PUT update action is called' });
+  const { postId } = req.params;
+  const { title, description } = req.body;
+
+  db.posts.findById(postId)
+    .then((post) => {
+      if (post) {
+        post.update({
+          title,
+          description,
+        })
+          .then((updatedPost) => {
+            res.send(updatedPost);
+          });
+      } else {
+        res.status(404).json({ code: 404, message: 'Post not found' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ code: 500, message: 'Internal server error' });
+    });
 });
 
 
 // DELETE destroy
 router.delete('/:postId', (req, res) => {
-  res.json({ text: 'DELETE destroy action is called' });
+  const { postId } = req.params;
+
+  db.posts.findById(postId)
+    .then((post) => {
+      if (post) {
+        post.destroy()
+          .then(() => {
+            res.status(204).end();
+          });
+      } else {
+        res.status(404).json({ code: 404, message: 'Post not found' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ code: 500, message: 'Internal server error' });
+    });
 });
