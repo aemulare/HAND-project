@@ -1,5 +1,15 @@
 .navbar {
-  min-height: 100px;
+  height: 100px;
+}
+
+
+.navbar-brand {
+  height: 95px;
+}
+
+
+.navbar .container {
+  margin-left: 0px;
 }
 
 

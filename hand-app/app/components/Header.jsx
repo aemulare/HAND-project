@@ -1,15 +1,17 @@
 import React from 'react';
+import Navbar from 'react-bootstrap/lib/Navbar';
 import '../assets/styles/header.css';
 
 export const Header = () => (
-  <nav className="navbar navbar-default no-margin">
-    <div className="navbar-header fixed-brand">
-      <a className="navbar-brand">
-        <img src="img/hand_logo_rectangle.svg" alt="HAND logo" height="65px" width="auto" />
-      </a>
-    </div>
-
-    <div className="collapse navbar-collapse">
+  <Navbar className="no-margin">
+    <Navbar.Header className="fixed-brand">
+      <Navbar.Brand>
+        <a href="#">
+          <img src="img/hand_logo_rectangle.svg" alt="HAND logo" height="65px" />
+        </a>
+      </Navbar.Brand>
+    </Navbar.Header>
+    <Navbar.Collapse>
       <ul className="nav navbar-nav">
         <li className="active">
           <button className="navbar-toggle collapse in" data-toggle="collapse">
@@ -17,8 +19,8 @@ export const Header = () => (
           </button>
         </li>
       </ul>
-    </div>
-  </nav>
+    </Navbar.Collapse>
+  </Navbar>
 );
 
 export default Header;
