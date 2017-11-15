@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/header';
 // import Sidebar from '../components/sidebar';
 // import Content from './content';
-import SignUp from './sign_up';
+import SignIn from './sign_in';
 import '../assets/styles/app.css';
 
 
@@ -17,7 +17,7 @@ class App extends Component {
           {/* <Sidebar />
           <Content /> */}
         </div>
-        <SignUp />
+        <SignIn />
       </div>
     );
   }
