@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../components/header';
-import Sidebar from '../components/sidebar';
-import Content from './content';
+// import Sidebar from '../components/sidebar';
+// import Content from './content';
+import SignUp from './sign_up';
 import '../assets/styles/app.css';
 
 
@@ -13,10 +14,10 @@ class App extends Component {
           <Header />
         </header>
         <div id="wrapper">
-          <Sidebar />
-          <Content />
+          {/* <Sidebar />
+          <Content /> */}
         </div>
-
+        <SignUp />
       </div>
     );
   }
