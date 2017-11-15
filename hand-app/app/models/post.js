@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     isOpen: { type: DataTypes.BOOLEAN, field: 'is_open' },
   }, {
     underscored: true,
-    timestamps: false,
   });
 
   Post.associate = db => Post.belongsTo(db.users);

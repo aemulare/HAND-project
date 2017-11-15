@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('../models');
 
 const router = express.Router();
 module.exports = (app) => {
@@ -21,6 +22,21 @@ router.get('/:postId', (req, res) => {
 // POST create
 router.post('/', (req, res) => {
   res.json({ text: 'POST create action is called' });
+  const { title, description, userId } = req.body;
+
+  db.posts.create({
+    title,
+    description,
+    isOpen: true,
+    user_id: userId
+  })
+    .then((post) => {
+      res.json(post);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ code: 500, message: 'Internal server error' });
+    });
 });
 
 
