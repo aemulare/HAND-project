@@ -1,4 +1,5 @@
 import React from 'react';
+import MenuIcon from 'react-icons/lib/fa/th-large';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import '../assets/styles/header.css';
 
@@ -15,7 +16,7 @@ export const Header = () => (
       <ul className="nav navbar-nav">
         <li className="active">
           <button className="navbar-toggle collapse in" data-toggle="collapse">
-            <span className="glyphicon glyphicon-th-large" />
+            <MenuIcon size={18} />
           </button>
         </li>
       </ul>
