@@ -5,8 +5,6 @@ const logger = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const compress = require('compression');
-const methodOverride = require('method-override');
 const passport = require('./passport');
 
 module.exports = (app, config) => {
@@ -25,9 +23,7 @@ module.exports = (app, config) => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
-  app.use(compress());
   app.use(express.static(`${config.root}/public`));
-  app.use(methodOverride());
 
   // Configures sessions and passport.
   app.use(session({

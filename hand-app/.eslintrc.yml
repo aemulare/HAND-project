@@ -1,0 +1,15 @@
+extends: airbnb
+rules:
+  no-undef: off
+  comma-dangle: off
+  no-console: off
+  max-len: off
+  no-param-reassign: off
+  function-paren-newline: off
+  no-use-before-define: off
+  react/prefer-stateless-function: off
+  react/jsx-filename-extension: off
+  react/prop-types: off
+  import/no-named-as-default: off
+  jsx-a11y/anchor-is-valid: off
+

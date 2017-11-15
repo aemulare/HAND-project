@@ -7,17 +7,17 @@ const config = {
   development: {
     root: rootPath,
     app: { name: 'hand-app' },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8000,
   },
   test: {
     root: rootPath,
     app: { name: 'hand-app' },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8000,
   },
   production: {
     root: rootPath,
     app: { name: 'hand-app' },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8000,
   },
 };
 
