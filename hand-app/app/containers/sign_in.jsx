@@ -17,7 +17,7 @@ class SignIn extends Component {
               </h1>
             </Col>
             <Col xs={12} sm={6} smOffset={3} md={4} mdOffset={4}>
-              <form className="auth" name="sign_up" action="/signup" method="post" autoComplete="off">
+              <form className="auth" name="sign_in" action="/signin" method="post" autoComplete="off">
                 <FormGroup>
                   <InputGroup>
                     <InputGroup.Addon>
