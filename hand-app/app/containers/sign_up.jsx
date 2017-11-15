@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import UserIcon from 'react-icons/lib/fa/user';
+import LockIcon from 'react-icons/lib/fa/lock';
+import { Grid, Row, Col, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
 import '../assets/styles/auth.css';
 
 class SignUp extends Component {
@@ -14,58 +16,50 @@ class SignUp extends Component {
               <br /> Help After Natural Disasters
               </h1>
             </Col>
-            <div className="col-xs-12">
+            <Col xs={12} sm={6} smOffset={3} md={4} mdOffset={4}>
               <form className="auth" name="sign_up" action="/signup" method="post" autoComplete="off">
+                <FormGroup>
+                  <InputGroup>
+                    <InputGroup.Addon>
+                      <UserIcon />
+                    </InputGroup.Addon>
+                    <FormControl type="text" placeholder="email" id="email" name="email" />
+                  </InputGroup>
+                </FormGroup>
 
-                <div className="row control-group">
-                  <div className="input-group col-xs-12 col-sm-4 col-sm-offset-4">
-                    <span className="input-group-addon">
-                      <i className="fa fa-user" />
-                    </span>
-                    <input type="text" className="form-control" name="email" id="email" placeholder="email" />
-                    <span className="help-block text-danger" />
-                  </div>
-                </div>
+                <FormGroup>
+                  <InputGroup>
+                    <InputGroup.Addon>
+                      <LockIcon />
+                    </InputGroup.Addon>
+                    <FormControl type="text" placeholder="password" name="password" minLength="6" maxLength="12" id="password" />
+                  </InputGroup>
+                </FormGroup>
 
-                <div className="row control-group">
-                  <div className="input-group col-xs-12 col-sm-4 col-sm-offset-4">
-                    <span className="input-group-addon">
-                      <i className="fa fa-lock" />
-                    </span>
-                    <input type="text" className="form-control" name="password" maxLength="12" id="password" placeholder="password" />
-                    <span className="help-block text-danger" />
-                  </div>
-                </div>
+                <FormGroup>
+                  <InputGroup>
+                    <InputGroup.Addon>
+                      <LockIcon />
+                    </InputGroup.Addon>
+                    <FormControl type="text" placeholder="confirm password" name="password_confirm" minLength="6" maxLength="12" id="password-confirm" />
+                  </InputGroup>
+                </FormGroup>
 
-                <div className="row control-group">
-                  <div className="input-group col-xs-12 col-sm-4 col-sm-offset-4">
-                    <span className="input-group-addon">
-                      <i className="fa fa-lock" />
-                    </span>
-                    <input type="text" className="form-control" name="password_confirm" maxLength="12" id="password-confirm" placeholder="confirm password" />
-                    <span className="help-block text-danger" />
-                  </div>
-                </div>
+                <Button type="submit" className="btn btn-lg btn-primary center-block btn-auth" id="register">
+                  Register
+                </Button>
 
-                <div className="row">
-                  <div className="form-group col-xs-12">
-                    <button className="btn btn-lg btn-primary center-block btn-auth" type="submit" id="register">Register</button>
-                  </div>
-                </div>
+                <FormGroup>
+                  <FormControl.Static className="text-center">
+                    Already have an account?
+                  </FormControl.Static>
+                </FormGroup>
 
-                <div className="row">
-                  <div className="col-xs-12">
-                    <p className="help-question">Already have an account?</p>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="form-group col-xs-12">
-                    <a href="/signin" className="btn btn-lg btn-default center-block btn-auth">Login</a>
-                  </div>
-                </div>
+                <Button action="/signin" className="btn btn-lg btn-default center-block btn-auth" id="register">
+                  Login
+                </Button>
               </form>
-            </div>
+            </Col>
           </Row>
         </Grid>
       </div>
