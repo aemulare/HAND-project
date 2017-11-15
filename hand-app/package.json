@@ -57,6 +57,7 @@
     "react-bootstrap": "^0.31.5",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.1.0",
+    "react-icons": "^2.2.7",
     "sass-loader": "^6.0.6",
     "sequelize": "^4.15.1",
     "serve-favicon": "^2.4.5",
