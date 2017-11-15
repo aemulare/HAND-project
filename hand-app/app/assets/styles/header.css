@@ -1,0 +1,16 @@
+.navbar {
+  min-height: 100px;
+}
+
+
+button.navbar-toggle {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+
+@media (min-width: 768px) {
+  .fixed-brand {
+    width: 250px;
+  }
+}
