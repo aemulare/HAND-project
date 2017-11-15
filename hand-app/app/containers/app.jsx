@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
+import Content from './content';
 import '../assets/styles/app.css';
 
 
@@ -13,6 +14,7 @@ class App extends Component {
         </header>
         <div id="wrapper">
           <Sidebar />
+          <Content />
         </div>
 
       </div>
