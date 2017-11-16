@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../components/header';
+// import Header from '../components/header';
 // import Sidebar from '../components/sidebar';
 // import Content from './content';
-import SignIn from './sign_in';
+// import SignIn from './sign_in';
+import Welcome from './welcome';
 import '../assets/styles/app.css';
 
 
@@ -10,14 +11,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header>
+        {/* <header>
           <Header />
-        </header>
+        </header> */}
         <div id="wrapper">
           {/* <Sidebar />
           <Content /> */}
         </div>
-        <SignIn />
+        <Welcome />
       </div>
     );
   }

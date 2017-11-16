@@ -1,0 +1,40 @@
+footer {
+  height: 65px;
+  background-color: #21539D;
+  color: white;
+  vertical-align: middle;
+}
+
+
+.navbar-default {
+  background-color: #21539D;
+  border-color: #21539D;
+}
+
+.navbar-default .navbar-text {
+  color: white;
+}
+
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+div.navbar-collapse.collapse {
+  /* background-color: aqua; */
+  margin-top: 20px;
+}
+
+div.navbar-header {
+  min-height: 80px;
+}
+
+button.navbar-toggle {
+  margin-top: 30px;
+}
+
+button#signin {
+  margin-top: 8px;
+}
+
+
