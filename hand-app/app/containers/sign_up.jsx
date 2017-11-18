@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import UserIcon from 'react-icons/lib/fa/user';
 import LockIcon from 'react-icons/lib/fa/lock';
 import { Grid, Row, Col, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
@@ -55,9 +56,9 @@ class SignUp extends Component {
                   </FormControl.Static>
                 </FormGroup>
 
-                <Button action="/signin" className="btn btn-lg btn-default center-block btn-auth" id="register">
+                <Link to="/signin" className="btn btn-lg btn-default center-block btn-auth" id="register">
                   Login
-                </Button>
+                </Link>
               </form>
             </Col>
           </Row>

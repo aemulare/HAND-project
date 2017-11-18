@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import '../assets/styles/welcome_header.css';
 
 export const WelcomeHeader = () => (
@@ -19,10 +20,10 @@ export const WelcomeHeader = () => (
       <Nav pullRight>
         <NavItem eventKey={1} href="#">About</NavItem>
         <NavItem eventKey={2} href="#">News</NavItem>
-        <NavItem eventKey={2} href="#">Contact</NavItem>
-        <Button action="/signin" className="btn btn-default center-block btn-auth" id="signin">
-                  Sign In
-        </Button>
+        <NavItem eventKey={3} href="#">Contact</NavItem>
+        <LinkContainer to="/signin" >
+          <NavItem eventKey={4} className="btn btn-default btn-sm signin">Sign In</NavItem>
+        </LinkContainer>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

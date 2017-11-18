@@ -33,8 +33,13 @@ button.navbar-toggle {
   margin-top: 30px;
 }
 
-button#signin {
-  margin-top: 8px;
+.signin {
+  margin-top: 5px;
+  height: 40px;
+  background-color: transparent;
 }
 
+li.signin > a {
+  padding: 5px 15px;;
+}
 
