@@ -33,7 +33,7 @@ class SignUp extends Component {
                     <InputGroup.Addon>
                       <LockIcon />
                     </InputGroup.Addon>
-                    <FormControl type="text" placeholder="password" name="password" minLength="6" maxLength="12" id="password" />
+                    <FormControl type="password" placeholder="password" name="password" minLength="6" maxLength="12" id="password" />
                   </InputGroup>
                 </FormGroup>
 
@@ -42,7 +42,7 @@ class SignUp extends Component {
                     <InputGroup.Addon>
                       <LockIcon />
                     </InputGroup.Addon>
-                    <FormControl type="text" placeholder="confirm password" name="password_confirm" minLength="6" maxLength="12" id="password-confirm" />
+                    <FormControl type="password" placeholder="confirm password" name="password_confirm" minLength="6" maxLength="12" id="password-confirm" />
                   </InputGroup>
                 </FormGroup>
 

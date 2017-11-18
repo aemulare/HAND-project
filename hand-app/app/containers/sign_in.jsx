@@ -33,7 +33,7 @@ class SignIn extends Component {
                     <InputGroup.Addon>
                       <LockIcon />
                     </InputGroup.Addon>
-                    <FormControl type="text" placeholder="password" name="password" minLength="6" maxLength="12" id="password" />
+                    <FormControl type="password" placeholder="password" name="password" minLength="6" maxLength="12" id="password" />
                   </InputGroup>
                 </FormGroup>
 

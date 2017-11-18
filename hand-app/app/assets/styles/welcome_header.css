@@ -6,30 +6,30 @@ footer {
 }
 
 
-.navbar-default {
+.nav-welcome {
   background-color: #21539D;
   border-color: #21539D;
 }
 
-.navbar-default .navbar-text {
+.nav-welcome .navbar-text {
   color: white;
 }
 
 
-.navbar-default .navbar-nav>li>a {
+.nav-welcome .navbar-nav>li>a {
   color: white;
 }
 
-div.navbar-collapse.collapse {
+div.collapse-welcome.collapse {
   /* background-color: aqua; */
   margin-top: 20px;
 }
 
-div.navbar-header {
+div.header-welcome {
   min-height: 80px;
 }
 
-button.navbar-toggle {
+button.toggle-welcome {
   margin-top: 30px;
 }
 

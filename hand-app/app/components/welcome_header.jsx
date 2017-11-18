@@ -4,16 +4,16 @@ import { LinkContainer } from 'react-router-bootstrap';
 import '../assets/styles/welcome_header.css';
 
 export const WelcomeHeader = () => (
-  <Navbar collapseOnSelect>
-    <Navbar.Header>
+  <Navbar collapseOnSelect className="nav-welcome">
+    <Navbar.Header className="header-welcome">
       <Navbar.Brand>
         <a href="#">
           <img src="img/hand_logo_rectangle_white.svg" alt="HAND logo" height="65px" />
         </a>
       </Navbar.Brand>
-      <Navbar.Toggle />
+      <Navbar.Toggle className="toggle-welcome" />
     </Navbar.Header>
-    <Navbar.Collapse>
+    <Navbar.Collapse className="collapse-welcome">
       <Navbar.Text>
         Help After Natural Disasters
       </Navbar.Text>
