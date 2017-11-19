@@ -5,6 +5,7 @@ rules:
   no-console: off
   max-len: off
   no-param-reassign: off
+  no-underscore-dangle: off
   function-paren-newline: off
   no-use-before-define: off
   react/prefer-stateless-function: off

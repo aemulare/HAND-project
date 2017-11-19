@@ -1,14 +1,16 @@
-const bcrypt = require('bcrypt-nodejs');
 const passport = require('passport');
+const bcrypt = require('bcrypt-nodejs');
 const LocalStrategy = require('passport-local').Strategy;
-const db = require('../app/models');
+const jwt = require('passport-jwt');
+const db = require('../models');
+const config = require('./main');
 
 
 function passwordsMatch(submitted, stored) {
   return bcrypt.compareSync(submitted, stored);
 }
 
-const strategy = new LocalStrategy(
+const localLogin = new LocalStrategy(
   { usernameField: 'email' },
   (email, password, done) => {
     db.users.findOne({
@@ -29,27 +31,22 @@ const strategy = new LocalStrategy(
   }
 );
 
-passport.use(strategy);
+const jwtOptions = {
+  jwtFromRequest: jwt.ExtractJwt.fromAuthHeader(),
+  secretOrKey: config.secret
+};
 
-
-passport.serializeUser((user, done) => {
-  done(null, user.id);
+const jwtLogin = new jwt.Strategy(jwtOptions, (payload, done) => {
+  db.users.findById(payload._id)
+    .then((user) => {
+      if (!user) {
+        return done(null, false, { message: 'Incorrect user ID' });
+      }
+      return done(null, user);
+    });
 });
 
-
-passport.deserializeUser((id, done) => {
-  db.users.findById(id).then((user) => {
-    if (!user) {
-      return done(null, false);
-    }
-    return done(null, user);
-  });
-});
-
-passport.redirectIfLoggedIn = route =>
-  (req, res, next) => (req.user ? res.redirect(route) : next());
-
-passport.redirectIfNotLoggedIn = route =>
-  (req, res, next) => (req.user ? next() : res.redirect(route));
+passport.use(jwtLogin);
+passport.use(localLogin);
 
 module.exports = passport;
