@@ -32,12 +32,12 @@ const localLogin = new LocalStrategy(
 );
 
 const jwtOptions = {
-  jwtFromRequest: jwt.ExtractJwt.fromAuthHeader(),
+  jwtFromRequest: jwt.ExtractJwt.fromAuthHeaderWithScheme('jwt'),
   secretOrKey: config.secret
 };
 
 const jwtLogin = new jwt.Strategy(jwtOptions, (payload, done) => {
-  db.users.findById(payload._id)
+  db.users.findById(payload.id)
     .then((user) => {
       if (!user) {
         return done(null, false, { message: 'Incorrect user ID' });
