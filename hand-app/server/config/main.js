@@ -1,24 +1,15 @@
 const path = require('path');
 
-const rootPath = path.normalize(`${__dirname}/..`);
-const env = process.env.NODE_ENV || 'development';
+module.exports = {
+  // The server application root path
+  root: path.normalize(`${__dirname}/..`),
 
-const config = {
-  development: {
-    root: rootPath,
-    app: { name: 'hand-app' },
-    port: process.env.PORT || 8000
-  },
-  test: {
-    root: rootPath,
-    app: { name: 'hand-app' },
-    port: process.env.PORT || 8000
-  },
-  production: {
-    root: rootPath,
-    app: { name: 'hand-app' },
-    port: process.env.PORT || 8000
-  }
+  // Current environment
+  env: process.env.NODE_ENV || 'development',
+
+  // Server port
+  port: process.env.PORT || 8000,
+
+  // Secret key for JWT signing and encryption
+  secret: 'dxsaster'
 };
-
-module.exports = config[env];

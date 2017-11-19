@@ -1,9 +1,4 @@
 const express = require('express');
-const glob = require('glob');
-const logger = require('morgan');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const passport = require('./passport');
 
 module.exports = (app, config) => {
@@ -13,9 +8,6 @@ module.exports = (app, config) => {
   app.locals.ENV_DEVELOPMENT = env == 'development';
   /* eslint-enable no-param-reassign, eqeqeq */
 
-  app.use(logger('dev'));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(express.static(`${config.root}/public`));
 
