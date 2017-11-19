@@ -1,0 +1,17 @@
+{
+  "name": "hand-server-api",
+  "version": "1.0.0",
+  "description": "Hand After Natural Disasters. Social platform.",
+  "main": "index.js",
+  "repository": "https://github.com/aemulare/HAND-project",
+  "author": "Eun-jung Park; Naief Perez Secin; Maria Romanova",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
