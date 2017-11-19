@@ -7,26 +7,34 @@ footer {
 
 
 .nav-welcome {
+  min-height: 130px !important;
   background-color: #21539D;
   border-color: #21539D;
 }
 
-.nav-welcome .navbar-text {
-  color: white;
-}
-
 
 .nav-welcome .navbar-nav>li>a {
+  height: 40px;
+  margin: 5px 10px 5px 10px;
+  color: aqua;
+  border-radius: 5px;
+}
+
+
+.collapse-welcome {
+  background-color: #21539D;
+}
+
+@media only screen and (min-width: 1000px) {
+  .collapse-welcome > ul {
+    margin-top: 30px;
+  }
+}
+
+
+
+.header-welcome > .navbar-brand > P {
   color: white;
-}
-
-div.collapse-welcome.collapse {
-  /* background-color: aqua; */
-  margin-top: 20px;
-}
-
-div.header-welcome {
-  min-height: 80px;
 }
 
 button.toggle-welcome {

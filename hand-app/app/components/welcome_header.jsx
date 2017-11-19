@@ -1,28 +1,35 @@
 import React from 'react';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../assets/styles/welcome_header.css';
+
 
 export const WelcomeHeader = () => (
   <Navbar collapseOnSelect className="nav-welcome">
     <Navbar.Header className="header-welcome">
       <Navbar.Brand>
-        <a href="#">
-          <img src="img/hand_logo_rectangle_white.svg" alt="HAND logo" height="65px" />
-        </a>
+        <p>Help After Natural Disasters</p>
+        <img src="img/hand_logo_rectangle_white.svg" alt="HAND logo" height="65px" />
       </Navbar.Brand>
       <Navbar.Toggle className="toggle-welcome" />
     </Navbar.Header>
     <Navbar.Collapse className="collapse-welcome">
-      <Navbar.Text>
-        Help After Natural Disasters
-      </Navbar.Text>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">About</NavItem>
-        <NavItem eventKey={2} href="#">News</NavItem>
-        <NavItem eventKey={3} href="#">Contact</NavItem>
+        <LinkContainer to="/map" >
+          <NavItem eventKey={1}>Welcome</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/about" >
+          <NavItem eventKey={2}>About</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/news" >
+          <NavItem eventKey={3}>News</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/contact" >
+          <NavItem eventKey={4}>Contact</NavItem>
+        </LinkContainer>
         <LinkContainer to="/signin" >
-          <NavItem eventKey={4} className="btn btn-default btn-sm signin">Sign In</NavItem>
+          <NavItem eventKey={5} className="btn btn-default btn-sm signin">Sign In</NavItem>
         </LinkContainer>
       </Nav>
     </Navbar.Collapse>
