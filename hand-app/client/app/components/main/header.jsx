@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MenuIcon from 'react-icons/lib/fa/th-large';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import '../../assets/styles/header.css';
@@ -7,9 +8,9 @@ const Header = () => (
   <Navbar className="no-margin">
     <Navbar.Header className="fixed-brand">
       <Navbar.Brand>
-        <a href="#">
+        <Link to="/home">
           <img src="img/hand_logo_rectangle.svg" alt="HAND logo" height="65px" />
-        </a>
+        </Link>
       </Navbar.Brand>
     </Navbar.Header>
     <Navbar.Collapse>

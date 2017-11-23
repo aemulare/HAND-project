@@ -5,7 +5,7 @@ const MenuItem = () => {
   const Icon = this.props.icon;
   return (
     <li className={this.props.active ? 'active' : null}>
-      <a href="#">
+      <a>
         <span className="pull-left">
           <Icon size={24} />
         </span>

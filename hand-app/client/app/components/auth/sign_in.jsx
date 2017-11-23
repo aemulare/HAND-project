@@ -41,7 +41,7 @@ const SignIn = () => (
 
             <FormGroup>
               <FormControl.Static className="text-center">
-                <a href="#" className="help-question">Forgot password?</a>
+                <a className="help-question">Forgot password?</a>
               </FormControl.Static>
             </FormGroup>
 
