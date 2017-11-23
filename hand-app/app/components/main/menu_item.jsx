@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/app.css';
+import '../../assets/styles/app.css';
 
 const MenuItem = () => {
   const Icon = this.props.icon;

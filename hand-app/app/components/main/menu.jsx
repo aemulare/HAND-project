@@ -7,7 +7,7 @@ import PolicyIcon from 'react-icons/lib/fa/gavel';
 import ContactIcon from 'react-icons/lib/fa/paper-plane-o';
 import SignOutIcon from 'react-icons/lib/fa/sign-out';
 import MenuItem from './menu_item';
-import '../assets/styles/app.css';
+import '../../assets/styles/app.css';
 
 const Menu = () => (
   <ul id="menu" className="sidebar-nav nav-pills nav-stacked">

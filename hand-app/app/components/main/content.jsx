@@ -1,6 +1,6 @@
 import React from 'react';
-import Breadcrumbs from '../components/breadcrumbs';
-import '../assets/styles/app.css';
+import Breadcrumbs from './breadcrumbs';
+import '../../assets/styles/app.css';
 
 const Content = () => (
   <div id="page-content-wrapper">

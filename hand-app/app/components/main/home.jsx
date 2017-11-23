@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../components/header';
-import Sidebar from '../components/sidebar';
+import Header from './header';
+import Sidebar from './sidebar';
 import Content from './content';
-import '../assets/styles/app.css';
+import '../../assets/styles/app.css';
 
 const Home = () => (
   <div>

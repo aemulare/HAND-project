@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuIcon from 'react-icons/lib/fa/th-large';
 import Navbar from 'react-bootstrap/lib/Navbar';
-import '../assets/styles/header.css';
+import '../../assets/styles/header.css';
 
 const Header = () => (
   <Navbar className="no-margin">

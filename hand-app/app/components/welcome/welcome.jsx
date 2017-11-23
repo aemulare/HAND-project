@@ -6,7 +6,7 @@ import Map from './map';
 import About from './about';
 import News from './news';
 import Contact from './contact';
-import '../assets/styles/welcome.css';
+import '../../assets/styles/welcome.css';
 
 const Welcome = () => (
   <div>
