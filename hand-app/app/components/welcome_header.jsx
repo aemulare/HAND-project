@@ -1,11 +1,9 @@
 import React from 'react';
-// import { BrowserRouter as Router } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../assets/styles/welcome_header.css';
 
-
-export const WelcomeHeader = () => (
+const WelcomeHeader = () => (
   <Navbar collapseOnSelect className="nav-welcome">
     <Navbar.Header className="header-welcome">
       <Navbar.Brand>

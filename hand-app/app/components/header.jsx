@@ -3,7 +3,7 @@ import MenuIcon from 'react-icons/lib/fa/th-large';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import '../assets/styles/header.css';
 
-export const Header = () => (
+const Header = () => (
   <Navbar className="no-margin">
     <Navbar.Header className="fixed-brand">
       <Navbar.Brand>

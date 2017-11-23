@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Contact = () => (
+const Contact = () => (
   <h1>Contact section</h1>
 );
 
