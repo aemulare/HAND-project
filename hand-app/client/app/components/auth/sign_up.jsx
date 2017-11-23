@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import UserIcon from 'react-icons/lib/fa/user';
-import LockIcon from 'react-icons/lib/fa/lock';
-import { Grid, Row, Col, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
+import EmailField from './email_field';
+import PasswordField from './password_field';
 import '../../assets/styles/auth.css';
 
 class SignUp extends Component {
@@ -58,51 +58,9 @@ class SignUp extends Component {
 
             <Col xs={12} sm={6} smOffset={3} md={4} mdOffset={4}>
               <form className="auth" autoComplete="off" onSubmit={this.handleSignUp}>
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Addon>
-                      <UserIcon />
-                    </InputGroup.Addon>
-                    <FormControl
-                      type="email"
-                      placeholder="email"
-                      value={email}
-                      onChange={this.handleEmailChanged}
-                    />
-                  </InputGroup>
-                </FormGroup>
-
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Addon>
-                      <LockIcon />
-                    </InputGroup.Addon>
-                    <FormControl
-                      type="password"
-                      placeholder="password"
-                      minLength="6"
-                      maxLength="12"
-                      value={password}
-                      onChange={this.handlePasswordChanged}
-                    />
-                  </InputGroup>
-                </FormGroup>
-
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Addon>
-                      <LockIcon />
-                    </InputGroup.Addon>
-                    <FormControl
-                      type="password"
-                      placeholder="confirm password"
-                      minLength="6"
-                      maxLength="12"
-                      value={passwordConfirmation}
-                      onChange={this.handlePasswordConfirmationChanged}
-                    />
-                  </InputGroup>
-                </FormGroup>
+                <EmailField email={email} changeCallback={this.handleEmailChanged} />
+                <PasswordField password={password} changeCallback={this.handlePasswordChanged} />
+                <PasswordField password={passwordConfirmation} changeCallback={this.handlePasswordConfirmationChanged} />
 
                 <Button type="submit" className="btn btn-lg btn-primary center-block btn-auth" id="register">
                   Register
