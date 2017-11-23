@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
-import WelcomeHeader from '../components/welcome_header';
-import Map from '../components/map';
-import About from '../components/about';
-import News from '../components/news';
-import Contact from '../components/contact';
+import WelcomeHeader from './welcome_header';
+import Map from './map';
+import About from './about';
+import News from './news';
+import Contact from './contact';
 import '../assets/styles/welcome.css';
 
 const Welcome = () => (
