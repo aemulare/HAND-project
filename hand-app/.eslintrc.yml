@@ -8,8 +8,6 @@ rules:
   no-underscore-dangle: off
   function-paren-newline: off
   no-use-before-define: off
-  react/jsx-filename-extension: off
-  react/prop-types: off
   import/no-named-as-default: off
   jsx-a11y/anchor-is-valid: off
 
