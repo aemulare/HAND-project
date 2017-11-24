@@ -25,7 +25,7 @@ class Auth {
    * @returns {boolean}
    */
   static isAuthenticated() {
-    return token() !== null;
+    return Auth.token() !== null;
   }
 
 
