@@ -1,6 +1,9 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import Breadcrumbs from './breadcrumbs';
 import UserProfile from '../user_profile/user_profile';
+import PublicUserProfile from '../user_profile/user_public_profile';
+import PostsCollection from '../posts/posts_collection';
 import '../../assets/styles/app.css';
 
 const Content = () => (
@@ -9,11 +12,9 @@ const Content = () => (
       <div className="row">
         <div className="col-lg-12">
           <Breadcrumbs />
-          {/* <h1>Main content goes here</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident laudantium nobis cum dignissimos ex inventore,
-            velit blanditiis. Quod laborum soluta quidem culpa officia eligendi, quam, recusandae iste aliquid amet odit!
-          </p> */}
-          <UserProfile />
+          <Route exact path="/root/profile" component={UserProfile} />
+          <Route exact path="/root/member" component={PublicUserProfile} />
+          <Route exact path="/root" component={PostsCollection} />
         </div>
       </div>
     </div>

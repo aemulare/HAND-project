@@ -45,7 +45,7 @@ class SignIn extends Component {
         if (res.status === 200) {
           const { token } = res.data;
           Auth.login(token);
-          this.props.history.push('/home');
+          this.props.history.push('/root');
         }
       })
       .catch((error) => {

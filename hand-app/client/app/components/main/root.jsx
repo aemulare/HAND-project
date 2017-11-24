@@ -4,7 +4,7 @@ import Sidebar from './sidebar';
 import Content from './content';
 import '../../assets/styles/app.css';
 
-const Home = () => (
+const Root = () => (
   <div>
     <header>
       <Header />
@@ -16,4 +16,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default Root;

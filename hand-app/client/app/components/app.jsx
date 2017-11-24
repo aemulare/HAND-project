@@ -5,7 +5,7 @@ import Welcome from './welcome/welcome';
 import SignUp from './auth/sign_up';
 import SignIn from './auth/sign_in';
 import SignOut from './auth/sign_out';
-import Home from './main/home';
+import Root from './main/root';
 import '../assets/styles/app.css';
 
 
@@ -15,7 +15,7 @@ const App = () => (
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signout" component={SignOut} />
-      <PrivateRoute exact path="/home" component={Home} />
+      <PrivateRoute path="/root" component={Root} />
       <Route path="/" component={Welcome} />
     </Switch>
   </div>
