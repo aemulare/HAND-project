@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
-import 'whatwg-fetch';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import EmailField from './email_field';
 import PasswordField from './password_field';
+import Auth from '../../modules/auth';
 import '../../assets/styles/auth.css';
 
 class SignUp extends Component {
@@ -28,13 +30,21 @@ class SignUp extends Component {
 
     const API_URL = 'http://localhost:8000/api/v1';
     const API_HEADERS = { 'Content-Type': 'application/json' };
-    fetch(`${API_URL}/signup`, {
-      method: 'POST',
-      headers: API_HEADERS,
-      body: JSON.stringify({ email, password })
-    })
-      .then(response => response.json())
-      .then(responseData => console.log(responseData))
+    const client = axios.create({
+      baseURL: API_URL,
+      timeout: 1000,
+      headers: API_HEADERS
+    });
+
+    client.post('signup', { email, password })
+      .then((res) => {
+        if (res.status === 201) {
+          const { token } = res.data;
+          Auth.login(token);
+          this.props.history.push('/home');
+        }
+      })
+
       .catch(error => console.log(error));
   }
 
@@ -95,5 +105,9 @@ class SignUp extends Component {
     );
   }
 }
+
+SignUp.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default SignUp;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
+import axios from 'axios';
 import EmailField from './email_field';
 import PasswordField from './password_field';
 import Auth from '../../modules/auth';
@@ -26,15 +27,19 @@ class SignIn extends Component {
 
     const API_URL = 'http://localhost:8000/api/v1';
     const API_HEADERS = { 'Content-Type': 'application/json' };
-    fetch(`${API_URL}/signin`, {
-      method: 'POST',
-      headers: API_HEADERS,
-      body: JSON.stringify({ email, password })
-    })
-      .then(response => response.json())
-      .then((responseData) => {
-        Auth.login(responseData.token);
-        this.props.history.push('/home');
+    const client = axios.create({
+      baseURL: API_URL,
+      timeout: 1000,
+      headers: API_HEADERS
+    });
+
+    client.post('signin', { email, password })
+      .then((res) => {
+        if (res.status === 200) {
+          const { token } = res.data;
+          Auth.login(token);
+          this.props.history.push('/home');
+        }
       })
       .catch(error => console.log(error));
   }
