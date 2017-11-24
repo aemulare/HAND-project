@@ -19,8 +19,19 @@ class SignIn extends Component {
   }
 
   handleSignIn(event) {
-    console.log(this.state);
     event.preventDefault();
+    const { email, password } = this.state;
+
+    const API_URL = 'http://localhost:8000/api/v1';
+    const API_HEADERS = { 'Content-Type': 'application/json' };
+    fetch(`${API_URL}/signin`, {
+      method: 'POST',
+      headers: API_HEADERS,
+      body: JSON.stringify({ email, password })
+    })
+      .then(response => response.json())
+      .then(responseData => console.log(responseData))
+      .catch(error => console.log(error));
   }
 
 
