@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
 import EmailField from './email_field';
 import PasswordField from './password_field';
+import Auth from '../../modules/auth';
 import '../../assets/styles/auth.css';
 
 class SignIn extends Component {
@@ -30,7 +32,10 @@ class SignIn extends Component {
       body: JSON.stringify({ email, password })
     })
       .then(response => response.json())
-      .then(responseData => console.log(responseData))
+      .then((responseData) => {
+        Auth.login(responseData.token);
+        this.props.history.push('/home');
+      })
       .catch(error => console.log(error));
   }
 
@@ -63,7 +68,7 @@ class SignIn extends Component {
                 <PasswordField password={password} changeCallback={this.handlePasswordChanged} />
 
                 <Button type="submit" className="btn btn-lg btn-primary center-block btn-auth" id="login">
-              Login
+                  Login
                 </Button>
 
                 <FormGroup>
@@ -74,12 +79,12 @@ class SignIn extends Component {
 
                 <FormGroup>
                   <FormControl.Static className="text-center">
-                Do not have an account?
+                    Do not have an account?
                   </FormControl.Static>
                 </FormGroup>
 
                 <Link to="/signup" className="btn btn-lg btn-default center-block btn-auth" id="register">
-              Create an account
+                  Create an account
                 </Link>
               </form>
             </Col>
@@ -89,5 +94,9 @@ class SignIn extends Component {
     );
   }
 }
+
+SignIn.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default SignIn;
