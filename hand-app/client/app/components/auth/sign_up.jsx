@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
+import 'whatwg-fetch';
 import EmailField from './email_field';
 import PasswordField from './password_field';
 import '../../assets/styles/auth.css';
@@ -22,8 +23,19 @@ class SignUp extends Component {
 
 
   handleSignUp(event) {
-    console.log(this.state);
     event.preventDefault();
+    const { email, password } = this.state;
+
+    const API_URL = 'http://localhost:8000/api/v1';
+    const API_HEADERS = { 'Content-Type': 'application/json' };
+    fetch(`${API_URL}/signup`, {
+      method: 'POST',
+      headers: API_HEADERS,
+      body: JSON.stringify({ email, password })
+    })
+      .then(response => response.json())
+      .then(responseData => console.log(responseData))
+      .catch(error => console.log(error));
   }
 
 
