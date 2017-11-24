@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-const TextField = ({ label, value, changeCallback }) => (
+const FieldGroup = ({ type, label, value, changeCallback }) => (
   <FormGroup>
     <ControlLabel>{label}</ControlLabel>
     <InputGroup>
       <FormControl
-        type="text"
+        type={type}
         value={value}
         onChange={changeCallback}
       />
@@ -15,10 +15,11 @@ const TextField = ({ label, value, changeCallback }) => (
   </FormGroup>
 );
 
-TextField.propTypes = {
+FieldGroup.propTypes = {
+  type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   changeCallback: PropTypes.func.isRequired
 };
 
-export default TextField;
+export default FieldGroup;

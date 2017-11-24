@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button, Image, ButtonToolbar, Panel } from 'react-bootstrap';
 import DateOfBirthField from './dob_field';
-import TextField from './text_field';
+import FieldGroup from './field_group';
 import SelectField from './select_field';
 import UserpicField from './userpic_field';
 
@@ -108,22 +108,22 @@ class UserProfile extends Component {
             <Grid>
               <Row>
                 <Col sm={12} md={3} lg={3}>
-                  <TextField label="First Name" value={firstName} width={300} important />
-                  <TextField label="Middle Name" value={middleName} />
-                  <TextField label="Last Name" value={lastName} />
+                  <FieldGroup type="text" label="First Name" value={firstName} width={300} important />
+                  <FieldGroup type="text" label="Middle Name" value={middleName} />
+                  <FieldGroup type="text" label="Last Name" value={lastName} />
                   <DateOfBirthField dateOfBirth={dateOfBirth} />
-                  <TextField label="Phone Number" value={phone} />
-                  <TextField label="Email" value={email} />
-                  <TextField label="Password" value={password} />
+                  <FieldGroup type="text" label="Phone Number" value={phone} />
+                  <FieldGroup type="email" label="Email" value={email} />
+                  <FieldGroup type="password" label="Password" value={password} />
                 </Col>
 
                 <Col sm={12} md={5} lg={5}>
-                  <TextField label="Address Line 1" value={addressLine1} />
-                  <TextField label="Address Line 2 (optional)" value={addressLine2} />
-                  <TextField label="City" value={city} />
-                  <TextField label="State / Region / Province" value={region} />
+                  <FieldGroup type="text" label="Address Line 1" value={addressLine1} />
+                  <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} />
+                  <FieldGroup type="text" label="City" value={city} />
+                  <FieldGroup type="text" label="State / Region / Province" value={region} />
                   <SelectField label="Country" value={country} placeholder="Select your country" />
-                  <TextField label="Postal Code" value={postalCode} />
+                  <FieldGroup type="text" label="Postal Code" value={postalCode} />
                 </Col>
 
                 <Col sm={12} md={2} lg={2}>

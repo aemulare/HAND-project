@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-const TextField = (
+// temporary
+const options = [
+  { code: 'alb', value: 'Albania' },
+  { code: 'usa', value: 'United States' },
+  { code: 'can', value: 'Canada' }];
+
+
+const SelectField = (
   {
     label, value, placeholder, changeCallback
   }
@@ -16,18 +23,19 @@ const TextField = (
         value={value}
         onChange={changeCallback}
       >
-        <option value="select">select</option>
-        <option value="United States">United States</option>
+        {
+        options.map(option => (<option key={options.code} value={options.value}>{option.value}</option>))
+      }
       </FormControl>
     </InputGroup>
   </FormGroup>
 );
 
-TextField.propTypes = {
+SelectField.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   changeCallback: PropTypes.func.isRequired
 };
 
-export default TextField;
+export default SelectField;
