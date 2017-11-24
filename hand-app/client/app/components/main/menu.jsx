@@ -11,7 +11,7 @@ import '../../assets/styles/app.css';
 
 const Menu = () => (
   <ul id="menu" className="sidebar-nav nav-pills nav-stacked">
-    <MenuItem label="Jane Smith" icon={UserIcon} active />
+    <MenuItem label="FirstName LastName" icon={UserIcon} active />
     <MenuItem label="Home" icon={HomeIcon} />
     <MenuItem label="News" icon={NewsIcon} />
     <MenuItem label="About" icon={AboutIcon} />
