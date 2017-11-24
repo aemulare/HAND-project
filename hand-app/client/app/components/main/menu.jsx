@@ -17,7 +17,7 @@ const Menu = () => (
     <MenuItem label="About" icon={AboutIcon} />
     <MenuItem label="Policy" icon={PolicyIcon} />
     <MenuItem label="Contact" icon={ContactIcon} />
-    <MenuItem label="Sign out" icon={SignOutIcon} />
+    <MenuItem label="Sign out" icon={SignOutIcon} path="/signout" />
   </ul>
 );
 

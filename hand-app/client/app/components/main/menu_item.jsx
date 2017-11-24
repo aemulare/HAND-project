@@ -1,18 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../../assets/styles/app.css';
 
-const MenuItem = ({ label, icon, active }) => {
+const MenuItem = ({ label, icon, active, path }) => {
   const Icon = icon;
 
   return (
     <li className={active ? 'active' : null}>
-      <a>
+      <Link to={path}>
         <span className="pull-left">
           <Icon size={24} />
         </span>
         {label}
-      </a>
+      </Link>
     </li>
   );
 };
@@ -20,11 +21,13 @@ const MenuItem = ({ label, icon, active }) => {
 MenuItem.propTypes = {
   label: PropTypes.string.isRequired,
   icon: PropTypes.func.isRequired,
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  path: PropTypes.string
 };
 
 MenuItem.defaultProps = {
-  active: false
+  active: false,
+  path: '/home'
 };
 
 export default MenuItem;

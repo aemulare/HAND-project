@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Welcome from './welcome/welcome';
 import SignUp from './auth/sign_up';
 import SignIn from './auth/sign_in';
+import SignOut from './auth/sign_out';
 import Home from './main/home';
 import '../assets/styles/app.css';
 
@@ -12,6 +13,7 @@ const App = () => (
     <Switch>
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/signin" component={SignIn} />
+      <Route exact path="/signout" component={SignOut} />
       <Route exact path="/home" component={Home} />
       <Route path="/" component={Welcome} />
     </Switch>
