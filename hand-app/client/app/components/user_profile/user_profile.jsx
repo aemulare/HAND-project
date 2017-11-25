@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button, Image, ButtonToolbar, Panel } from 'react-bootstrap';
+import { Grid, Row, Col, Button, ButtonToolbar, Panel } from 'react-bootstrap';
 import axios from 'axios';
 import DateOfBirthField from './dob_field';
-import FieldGroup from './field_group';
-import SelectField from './select_field';
-import UserpicField from './userpic_field';
+import FieldGroup from '../shared/field_group';
+import SelectField from '../shared/select_field';
+import Userpic from '../shared/userpic';
+import FilePicker from '../shared/filepicker';
 import Auth from '../../modules/auth';
 
 
@@ -145,8 +146,8 @@ class UserProfile extends Component {
                 </Col>
 
                 <Col sm={12} md={2} lg={2}>
-                  <Image src="img/male_user_01.jpg" width={200} circle responsive />
-                  <UserpicField value={userpic} />
+                  <Userpic src="img/male_user_01.jpg" width={200} />
+                  <FilePicker value={userpic} />
                 </Col>
 
               </Row>

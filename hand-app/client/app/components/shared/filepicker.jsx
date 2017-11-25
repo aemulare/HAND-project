@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-const UserpicField = ({ value, changeCallback }) => (
+const FilePicker = ({ file, changeCallback }) => (
   <FormGroup>
     <ControlLabel>Userpic</ControlLabel>
     <InputGroup>
       <FormControl
         type="file"
-        value={value}
+        value={file}
         onChange={changeCallback}
       />
     </InputGroup>
   </FormGroup>
 );
 
-UserpicField.propTypes = {
-  value: PropTypes.string.isRequired,
+FilePicker.propTypes = {
+  file: PropTypes.string.isRequired,
   changeCallback: PropTypes.func.isRequired
 };
 
-export default UserpicField;
+export default FilePicker;
