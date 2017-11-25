@@ -25,3 +25,16 @@ exports.states = (req, res) => {
       res.status(500).json({ code: 500, message: 'Internal server error' });
     });
 };
+
+
+// GET all tags
+exports.tags = (req, res) => {
+  db.tags.findAll()
+    .then((tags) => {
+      res.json(tags);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ code: 500, message: 'Internal server error' });
+    });
+};

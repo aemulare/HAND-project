@@ -25,6 +25,7 @@ module.exports = (app) => {
   // References routes
   api.get('/countries', requireJwt, refs.countries);
   api.get('/states', requireJwt, refs.states);
+  api.get('/tags', requireJwt, refs.tags);
 
 
   app.use('/api/v1', api);
