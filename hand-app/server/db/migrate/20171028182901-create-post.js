@@ -20,7 +20,7 @@ module.exports = {
     },
     description: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2048),
     },
     is_open: {
       allowNull: false,
