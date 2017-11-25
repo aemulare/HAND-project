@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button, Image, ButtonToolbar, Panel } from 'react-bootstrap';
+import axios from 'axios';
 import DateOfBirthField from './dob_field';
 import FieldGroup from './field_group';
 import SelectField from './select_field';
 import UserpicField from './userpic_field';
+import Auth from '../../modules/auth';
 
 
 class UserProfile extends Component {
   constructor() {
     super();
     this.state = {
+      countries: [],
       firstName: '',
       middleName: '',
       lastName: '',
@@ -19,7 +22,6 @@ class UserProfile extends Component {
       addressLine2: '',
       city: '',
       region: '',
-      country: '',
       postalCode: '',
       phone: '',
       email: '',
@@ -43,6 +45,29 @@ class UserProfile extends Component {
     // this.handlePasswordChanged = this.handlePasswordChanged.bind(this);
   }
 
+
+  componentDidMount() {
+    const API_URL = 'http://localhost:8000/api/v1';
+    const API_HEADERS = { 'Content-Type': 'application/json', Authorization: Auth.token() };
+    const client = axios.create({
+      baseURL: API_URL,
+      timeout: 1000,
+      headers: API_HEADERS
+    });
+
+    client.get('countries', { })
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({ countries: res.data });
+          console.log(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+
   // handleUserProfile(event) {
   //   event.preventDefault();
   //   const {
@@ -59,17 +84,6 @@ class UserProfile extends Component {
   //     postalCode,
   //     phone,
   //   } = this.state;
-
-  //   const API_URL = 'http://localhost:8000/api/v1';
-  //   const API_HEADERS = { 'Content-Type': 'application/json' };
-  //   fetch(`${API_URL}/users`, {
-  //     method: 'POST',
-  //     headers: API_HEADERS,
-  //     body: JSON.stringify({  })
-  //   })
-  //     .then(response => response.json())
-  //     .then(responseData => console.log(responseData))
-  //     .catch(error => console.log(error));
   // }
 
 
@@ -84,6 +98,7 @@ class UserProfile extends Component {
 
   render() {
     const {
+      countries,
       firstName,
       middleName,
       lastName,
@@ -93,12 +108,12 @@ class UserProfile extends Component {
       addressLine2,
       city,
       region,
-      country,
       postalCode,
       phone,
       email,
       password
     } = this.state;
+
 
     return (
       <div>
@@ -122,7 +137,7 @@ class UserProfile extends Component {
                   <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} />
                   <FieldGroup type="text" label="City" value={city} />
                   <FieldGroup type="text" label="State / Region / Province" value={region} />
-                  <SelectField label="Country" value={country} placeholder="Select your country" />
+                  <SelectField label="Country" selectedValue="us" placeholder="Select your country" options={countries} />
                   <FieldGroup type="text" label="Postal Code" value={postalCode} />
                 </Col>
 
