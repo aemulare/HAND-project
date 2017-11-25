@@ -14,6 +14,8 @@ class UserProfile extends Component {
     this.state = {
       countries: [],
       selectedCountry: 'us',
+      usStates: [],
+      selectedUsState: '',
       firstName: '',
       middleName: '',
       lastName: '',
@@ -29,7 +31,8 @@ class UserProfile extends Component {
       password: ''
     };
 
-    this.handleSelect = this.handleSelect.bind(this);
+    this.handleCountrySelect = this.handleCountrySelect.bind(this);
+    this.handleUsStateSelect = this.handleUsStateSelect.bind(this);
   }
 
 
@@ -52,11 +55,26 @@ class UserProfile extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+    client.get('states', { })
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({ usStates: res.data });
+          console.log(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
 
-  handleSelect(event) {
+  handleCountrySelect(event) {
     this.setState({ selectedCountry: event.target.value });
+  }
+
+  handleUsStateSelect(event) {
+    this.setState({ selectedUsState: event.target.value });
   }
 
 
@@ -64,6 +82,8 @@ class UserProfile extends Component {
     const {
       countries,
       selectedCountry,
+      usStates,
+      selectedUsState,
       firstName,
       middleName,
       lastName,
@@ -98,18 +118,29 @@ class UserProfile extends Component {
                 </Col>
 
                 <Col sm={12} md={5} lg={5}>
-                  <FieldGroup type="text" label="Address Line 1" value={addressLine1} />
-                  <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} />
-                  <FieldGroup type="text" label="City" value={city} />
-                  <FieldGroup type="text" label="State / Region / Province" value={region} />
                   <SelectField
                     label="Country"
                     selectedValue={selectedCountry}
                     placeholder="Select your country"
                     options={countries}
                     valueGetter={option => option.alpha2code}
-                    onSelect={this.handleSelect}
+                    onSelect={this.handleCountrySelect}
                   />
+                  <FieldGroup type="text" label="Address Line 1" value={addressLine1} />
+                  <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} />
+                  <FieldGroup type="text" label="City" value={city} />
+                  {
+                    selectedCountry === 'us' ?
+                      <SelectField
+                        label="State"
+                        selectedValue={selectedUsState}
+                        placeholder="Select your country"
+                        options={usStates}
+                        valueGetter={option => option.code}
+                        onSelect={this.handleUsStateSelect}
+                      />
+                   : <FieldGroup type="text" label="Region / Province" value={region} />
+                  }
                   <FieldGroup type="text" label="Postal Code" value={postalCode} />
                 </Col>
 
