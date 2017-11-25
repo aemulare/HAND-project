@@ -4,7 +4,7 @@ import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstra
 
 const SelectField = (
   {
-    label, selectedValue, placeholder, options, changeCallback
+    label, selectedValue, placeholder, options, onSelect, valueGetter
   }
 ) => (
   <FormGroup>
@@ -14,10 +14,10 @@ const SelectField = (
         componentClass="select"
         placeholder={placeholder}
         value={selectedValue}
-        onChange={changeCallback}
+        onChange={onSelect}
       >
         {
-          options.map(opt => (<option key={opt.id} value={opt.alpha2code}>{opt.name}</option>))
+          options.map(opt => (<option key={opt.id} value={valueGetter(opt)}>{opt.name}</option>))
         }
       </FormControl>
     </InputGroup>
@@ -29,7 +29,8 @@ SelectField.propTypes = {
   label: PropTypes.string.isRequired,
   selectedValue: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  changeCallback: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  valueGetter: PropTypes.func.isRequired
 };
 
 export default SelectField;

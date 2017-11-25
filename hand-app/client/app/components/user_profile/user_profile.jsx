@@ -13,6 +13,7 @@ class UserProfile extends Component {
     super();
     this.state = {
       countries: [],
+      selectedCountry: 'us',
       firstName: '',
       middleName: '',
       lastName: '',
@@ -28,21 +29,7 @@ class UserProfile extends Component {
       password: ''
     };
 
-    // this.handleUserProfile = this.handleUserProfile.bind(this);
-    // this.handleFirstNameChanged = this.handleFirstNameChanged.bind(this);
-    // this.handleMiddleNameChanged = this.handleMiddleNameChanged.bind(this);
-    // this.handleLastNameChanged = this.handleLastNameChanged.bind(this);
-    // this.handleDateOfBirthChanged = this.handleDateOfBirthChanged.bind(this);
-    // this.handleUserpicChanged = this.handleUserpicChanged.bind(this);
-    // this.handleAddressLine1Changed = this.handleAddressLine1Changed.bind(this);
-    // this.handleAddressLine2Changed = this.handleAddressLine2Changed.bind(this);
-    // this.handleCityChanged = this.handleCityChanged.bind(this);
-    // this.handleRegionChanged = this.handleRegionChanged.bind(this);
-    // this.handleCountryChanged = this.handleCountryChanged.bind(this);
-    // this.handlePostalCodeChanged = this.handlePostalCodeChanged.bind(this);
-    // this.handlePhoneChanged = this.handlePhoneChanged.bind(this);
-
-    // this.handlePasswordChanged = this.handlePasswordChanged.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
 
@@ -68,37 +55,15 @@ class UserProfile extends Component {
   }
 
 
-  // handleUserProfile(event) {
-  //   event.preventDefault();
-  //   const {
-  //     firstName,
-  //     middleName,
-  //     lastName,
-  //     dateOfBirth,
-  //     userpic,
-  //     addressLine1,
-  //     addressLine2,
-  //     city,
-  //     region,
-  //     country,
-  //     postalCode,
-  //     phone,
-  //   } = this.state;
-  // }
+  handleSelect(event) {
+    this.setState({ selectedCountry: event.target.value });
+  }
 
-
-  // handleEmailChanged(event) {
-  //   this.setState({ email: event.target.value });
-  // }
-
-
-  // handlePasswordChanged(event) {
-  //   this.setState({ password: event.target.value });
-  // }
 
   render() {
     const {
       countries,
+      selectedCountry,
       firstName,
       middleName,
       lastName,
@@ -137,7 +102,14 @@ class UserProfile extends Component {
                   <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} />
                   <FieldGroup type="text" label="City" value={city} />
                   <FieldGroup type="text" label="State / Region / Province" value={region} />
-                  <SelectField label="Country" selectedValue="us" placeholder="Select your country" options={countries} />
+                  <SelectField
+                    label="Country"
+                    selectedValue={selectedCountry}
+                    placeholder="Select your country"
+                    options={countries}
+                    valueGetter={option => option.alpha2code}
+                    onSelect={this.handleSelect}
+                  />
                   <FieldGroup type="text" label="Postal Code" value={postalCode} />
                 </Col>
 
