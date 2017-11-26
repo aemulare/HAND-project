@@ -1,0 +1,40 @@
+.nav {
+  min-height: 130px !important;
+  background-color: #21539D;
+  border-color: #21539D;
+
+  .header {
+    p {
+      color: white;
+    }
+    .toggle {
+      margin-top: 30px;
+    }
+  }
+  li {
+    a {
+      height: 40px;
+      margin: 5px 10px 5px 10px;
+      color: aqua !important;
+      border-radius: 5px;
+    }
+  }
+  .collapse {
+    background-color: #21539D;
+  }
+  
+  .signin {
+    margin-top: 5px;
+    height: 40px;
+    background-color: transparent;
+    a {
+      padding: 5px 15px;
+    }
+  }  
+}
+
+@media only screen and (min-width: 1000px) {
+  .collapse > ul {
+    margin-top: 30px;
+  }
+}
