@@ -6,6 +6,9 @@ import PublicUserProfile from '../user_profile/user_public_profile';
 import PostsCollection from '../posts/posts_collection';
 import PrivateRoute from '../auth/private_route';
 import Error404 from '../errors/404';
+import About from '../welcome/about';
+import Contact from '../welcome/contact';
+import Policy from './policy';
 import '../../assets/styles/app.scss';
 
 const Content = () => (
@@ -17,6 +20,9 @@ const Content = () => (
           <Switch>
             <PrivateRoute exact path="/root/profile" component={UserProfile} />
             <PrivateRoute exact path="/root/member" component={PublicUserProfile} />
+            <PrivateRoute exact path="/root/about" component={About} />
+            <PrivateRoute exact path="/root/policy" component={Policy} />
+            <PrivateRoute exact path="/root/contact" component={Contact} />
             <PrivateRoute exact path="/root" component={PostsCollection} />
             <Route component={Error404} />
           </Switch>
