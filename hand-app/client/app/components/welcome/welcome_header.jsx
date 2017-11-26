@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import '../../assets/styles/welcome_header.css';
+import '../../assets/styles/welcome_header.scss';
 
 const WelcomeHeader = () => (
   <Navbar collapseOnSelect className="nav-welcome">

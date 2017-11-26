@@ -6,7 +6,7 @@ import PublicUserProfile from '../user_profile/user_public_profile';
 import PostsCollection from '../posts/posts_collection';
 import PrivateRoute from '../auth/private_route';
 import Error404 from '../errors/404';
-import '../../assets/styles/app.css';
+import '../../assets/styles/app.scss';
 
 const Content = () => (
   <div id="page-content-wrapper">

@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu from './menu';
-import '../../assets/styles/app.css';
+import '../../assets/styles/app.scss';
 
 const Sidebar = () => (
   <div id="sidebar-wrapper">

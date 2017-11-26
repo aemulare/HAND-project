@@ -8,7 +8,7 @@ import EmailField from './email_field';
 import PasswordField from './password_field';
 import AuthLogo from './auth_logo';
 import Auth from '../../modules/auth';
-import '../../assets/styles/auth.css';
+import '../../assets/styles/auth.scss';
 
 class SignIn extends Component {
   constructor() {

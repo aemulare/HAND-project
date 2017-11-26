@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../../assets/styles/app.css';
+import '../../assets/styles/app.scss';
 
 const MenuItem = ({ label, icon, active, path }) => {
   const Icon = icon;

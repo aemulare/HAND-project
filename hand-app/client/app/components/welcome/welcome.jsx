@@ -6,7 +6,7 @@ import Map from './map';
 import About from './about';
 import Contact from './contact';
 import Error404 from '../errors/404';
-import '../../assets/styles/welcome.css';
+import '../../assets/styles/welcome.scss';
 
 const Welcome = () => (
   <div>
