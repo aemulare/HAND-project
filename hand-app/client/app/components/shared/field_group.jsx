@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-const FieldGroup = ({ type, label, value, changeCallback }) => (
+const FieldGroup = ({ type, label, value, placeholder, changeCallback }) => (
   <FormGroup>
     <ControlLabel>{label}</ControlLabel>
     <InputGroup>
       <FormControl
+        placeholder={placeholder}
         type={type}
         value={value}
         onChange={changeCallback}
@@ -16,6 +17,7 @@ const FieldGroup = ({ type, label, value, changeCallback }) => (
 );
 
 FieldGroup.propTypes = {
+  placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
