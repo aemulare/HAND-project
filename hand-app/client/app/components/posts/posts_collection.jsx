@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup, FormControl, Glyphicon, ControlLabel } from 'react-bootstrap';
 import { Column, Table, AutoSizer } from 'react-virtualized';
-import 'react-virtualized/styles.css'; // only needs to be imported once
+// import 'react-virtualized/styles.css'; // only needs to be imported once
 
 // Table data as a array of objects
 const list = [
