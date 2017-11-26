@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     middleName: { type: DataTypes.STRING, field: 'middle_name' },
     lastName: { type: DataTypes.STRING, field: 'last_name' },
     dob: DataTypes.DATE,
+    phone: DataTypes.STRING,
     userpic: DataTypes.BLOB,
   }, {
     underscored: true,

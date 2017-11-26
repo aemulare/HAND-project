@@ -26,6 +26,9 @@ module.exports = {
     dob: {
       type: DataTypes.DATE,
     },
+    phone: {
+      type: DataTypes.STRING(42),
+    },
     address_id: {
       type: DataTypes.INTEGER,
       references: {
