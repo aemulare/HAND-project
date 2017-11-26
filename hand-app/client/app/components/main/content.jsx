@@ -4,6 +4,7 @@ import Breadcrumbs from './breadcrumbs';
 import UserProfile from '../user_profile/user_profile';
 import PublicUserProfile from '../user_profile/user_public_profile';
 import PostsCollection from '../posts/posts_collection';
+import PrivateRoute from '../auth/private_route';
 import Error404 from '../errors/404';
 import '../../assets/styles/app.css';
 
@@ -14,9 +15,9 @@ const Content = () => (
         <div className="col-lg-12">
           <Breadcrumbs />
           <Switch>
-            <Route exact path="/root/profile" component={UserProfile} />
-            <Route exact path="/root/member" component={PublicUserProfile} />
-            <Route exact path="/root" component={PostsCollection} />
+            <PrivateRoute exact path="/root/profile" component={UserProfile} />
+            <PrivateRoute exact path="/root/member" component={PublicUserProfile} />
+            <PrivateRoute exact path="/root" component={PostsCollection} />
             <Route component={Error404} />
           </Switch>
         </div>
