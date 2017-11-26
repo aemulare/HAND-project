@@ -3,7 +3,7 @@
 }
 
 
-#wrapper {
+:global(#wrapper) {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -13,7 +13,7 @@
 }
 
 
-#wrapper.toggled {
+:global(#wrapper.toggled) {
   padding-left: 250px;
   overflow: hidden;
 }
@@ -21,12 +21,12 @@
 
 
 
-#wrapper.toggled {
+:global(#wrapper.toggled) {
   width: 250px;
 }
 
 
-#page-content-wrapper {
+:global(#page-content-wrapper) {
   position: absolute;
   padding: 15px;
   width: 100%;
@@ -35,18 +35,18 @@
 }
 
 
-.xyz {
+:global(.xyz) {  
   min-width: 360px;
 }
 
 
-#wrapper.toggled #page-content-wrapper {
+:global(#wrapper.toggled) :global(#page-content-wrapper) {
   position: relative;
   margin-right: 0px;
 }
 
 
-#footer-wrapper {
+:global(#footer-wrapper) {
   position: absolute;
   padding: 15px;
   width: 100%;
@@ -54,30 +54,30 @@
 }
 
 
-#wrapper.toggled #footer-wrapper {
+:global(#wrapper.toggled) :global(#footer-wrapper) {
   position: relative;
   margin-right: 0px;
 }
 
 
-.no-margin {
+:global(.no-margin) {
   margin: 0;
 }
 
 
 @media (min-width: 768px) {
-  #wrapper {
+  :global(#wrapper) {
     padding-left: 250px;
   }
-  .fixed-brand {
+  :global(.fixed-brand) {
     width: 250px;
   }
 
-  #wrapper.toggled {
+  :global(#wrapper.toggled) {
     padding-left: 0;
   }
   
-  #page-content-wrapper {
+  :global(#page-content-wrapper) {
     padding: 20px;
     position: relative;
     -webkit-transition: all 0.5s ease;
@@ -86,7 +86,7 @@
     transition: all 0.5s ease;
   }
 
-  #footer-wrapper {
+  :global(#footer-wrapper) {
     padding: 20px;
     position: relative;
     -webkit-transition: all 0.5s ease;
@@ -94,47 +94,6 @@
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
-
-  #wrapper {
-    /*
-    &.toggled #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-      padding-left: 250px;
-    }
-    &.toggled-2 #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-      margin-left: -200px;
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      width: auto;
-    }
-    &.toggled #pfooter-wrapper {
-      position: relative;
-      margin-right: 0;
-      padding-left: 250px;
-    }
-    &.toggled-2 #footer-wrapper {
-      position: relative;
-      bottom: 0;
-      margin-right: 0;
-      margin-left: -200px;
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      width: auto;
-    }
-    */
-  }
-}
-
-
-.navbar {
-  min-height: 100px;
 }
 
 
@@ -144,12 +103,12 @@ button#menu-toggle-2 {
   margin-left: 10px;
 }
 
-div.breadcrumbs {
+:global(.breadcrumbs) {
   font-size: 0.8em;
 }
 
 
-.footer {
+:global(.footer) {
   font-size: 0.8em;
   position: absolute;
   bottom: 0;

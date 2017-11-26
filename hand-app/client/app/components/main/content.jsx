@@ -10,7 +10,7 @@ import '../../assets/styles/app.scss';
 
 const Content = () => (
   <div id="page-content-wrapper">
-    <div className="container-fluid xyz">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-lg-12">
           <Breadcrumbs />
