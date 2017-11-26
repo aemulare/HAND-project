@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import EmailField from './email_field';
 import PasswordField from './password_field';
+import AuthLogo from './auth_logo';
 import Auth from '../../modules/auth';
 import '../../assets/styles/auth.css';
 
@@ -72,7 +73,7 @@ class SignUp extends Component {
         <Grid>
           <Row>
             <Col xs={12} id="hand-brand" className="center-block">
-              <img src="img/hand-logo.png" alt="hand-logo" id="hand-logo" className="img-responsive center-block" />
+              <AuthLogo />
               <h1 className="sign-intro">Register in Project
               <br /> Help After Natural Disasters
               </h1>
