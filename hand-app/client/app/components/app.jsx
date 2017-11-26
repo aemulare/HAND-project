@@ -6,7 +6,6 @@ import SignUp from './auth/sign_up';
 import SignIn from './auth/sign_in';
 import SignOut from './auth/sign_out';
 import Root from './main/root';
-import '../assets/styles/app.scss';
 
 
 const App = () => (

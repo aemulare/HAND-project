@@ -8,7 +8,7 @@ import EmailField from './email_field';
 import PasswordField from './password_field';
 import AuthLogo from './auth_logo';
 import Auth from '../../modules/auth';
-import '../../assets/styles/auth.scss';
+import css from './styles/auth.scss';
 
 class SignIn extends Component {
   constructor() {
@@ -75,34 +75,35 @@ class SignIn extends Component {
       <div className="container-fluid">
         <Grid>
           <Row>
-            <Col xs={12} id="hand-brand" className="center-block">
+            <Col xs={12} className="center-block">
               <AuthLogo />
-              <h1 className="sign-intro">Welcome to Project
+              <h1 className={css.sign_intro}>Welcome to Project
               <br /> Help After Natural Disasters
               </h1>
+
             </Col>
             <Col xs={12} sm={6} smOffset={3} md={4} mdOffset={4}>
-              <form className="auth" autoComplete="off" onSubmit={this.handleSignIn}>
+              <form className={css.auth} autoComplete="off" onSubmit={this.handleSignIn}>
                 <EmailField email={email} changeCallback={this.handleEmailChanged} />
                 <PasswordField password={password} changeCallback={this.handlePasswordChanged} />
 
-                <Button type="submit" className="btn btn-lg btn-primary center-block btn-auth" id="login">
+                <Button type="submit" className={`btn btn-lg btn-primary center-block ${css.btn_auth} ${css.center_block}`}>
                   Login
                 </Button>
 
                 <FormGroup>
-                  <FormControl.Static className="text-center">
-                    <a className="help-question">Forgot password?</a>
+                  <FormControl.Static>
+                    <a className={css.help_question}>Forgot password?</a>
                   </FormControl.Static>
                 </FormGroup>
 
                 <FormGroup>
-                  <FormControl.Static className="text-center">
+                  <FormControl.Static className={css.help_question}>
                     Do not have an account?
                   </FormControl.Static>
                 </FormGroup>
 
-                <Link to="/signup" className="btn btn-lg btn-default center-block btn-auth" id="register">
+                <Link to="/signup" className={`btn btn-lg btn-default center-block ${css.btn_auth} ${css.center_block}`}>
                   Create an account
                 </Link>
               </form>
