@@ -7,6 +7,7 @@ import SelectField from '../shared/select_field';
 import Userpic from '../shared/userpic';
 import FilePicker from '../shared/filepicker';
 import Auth from '../../modules/auth';
+import UserPicture from '../../assets/images/male_user_01.jpg';
 
 
 class UserProfile extends Component {
@@ -146,7 +147,7 @@ class UserProfile extends Component {
                 </Col>
 
                 <Col sm={12} md={2} lg={2}>
-                  <Userpic src="img/male_user_01.jpg" width={200} />
+                  <Userpic src={UserPicture} width={200} />
                   <FilePicker value={userpic} />
                 </Col>
 

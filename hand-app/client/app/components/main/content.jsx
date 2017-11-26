@@ -23,7 +23,7 @@ const Content = () => (
             <PrivateRoute exact path="/root/about" component={About} />
             <PrivateRoute exact path="/root/policy" component={Policy} />
             <PrivateRoute exact path="/root/contact" component={Contact} />
-            <PrivateRoute exact path="/root" component={PostsCollection} />
+            <PrivateRoute exact path="/root/home" component={PostsCollection} />
             <Route component={Error404} />
           </Switch>
         </div>

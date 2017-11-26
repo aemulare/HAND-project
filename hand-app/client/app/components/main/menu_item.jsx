@@ -1,19 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
 
 const MenuItem = ({ label, icon, active, path }) => {
   const Icon = icon;
 
   return (
-    <li className={active ? 'active' : null}>
-      <Link to={path}>
+    <LinkContainer to={path}>
+      <NavItem className={active ? 'active' : null}>
         <span className="pull-left">
           <Icon size={24} />
         </span>
         {label}
-      </Link>
-    </li>
+      </NavItem>
+    </LinkContainer>
   );
 };
 

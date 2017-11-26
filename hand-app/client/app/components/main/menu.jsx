@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import UserIcon from 'react-icons/lib/fa/user';
 import HomeIcon from 'react-icons/lib/fa/home';
 import AboutIcon from 'react-icons/lib/fa/info';
@@ -9,14 +10,21 @@ import MenuItem from './menu_item';
 import css from './styles/sidebar.scss';
 
 const Menu = () => (
-  <ul id="menu" className={`nav-pills nav-stacked ${css.sidebar_nav}`}>
-    <MenuItem label="FirstName LastName" icon={UserIcon} path="/root/profile" active />
-    <MenuItem label="Home" icon={HomeIcon} />
-    <MenuItem label="About" icon={AboutIcon} path="/root/about" />
-    <MenuItem label="Policy" icon={PolicyIcon} path="/root/policy" />
-    <MenuItem label="Contact" icon={ContactIcon} path="/root/contact" />
-    <MenuItem label="Sign out" icon={SignOutIcon} path="/signout" />
-  </ul>
+  <div className={css.menu_container}>
+    <Navbar fluid className={css.sidebar}>
+      <Navbar.Header>
+        <Navbar.Brand />
+      </Navbar.Header>
+      <Nav>
+        <MenuItem label="FirstName LastName" icon={UserIcon} path="/root/profile" />
+        <MenuItem label="Home" icon={HomeIcon} path="/root/home" />
+        <MenuItem label="About" icon={AboutIcon} path="/root/about" />
+        <MenuItem label="Policy" icon={PolicyIcon} path="/root/policy" />
+        <MenuItem label="Contact" icon={ContactIcon} path="/root/contact" />
+        <MenuItem label="Sign out" icon={SignOutIcon} path="/signout" />
+      </Nav>
+    </Navbar>
+  </div>
 );
 
 

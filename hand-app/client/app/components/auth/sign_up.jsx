@@ -42,7 +42,7 @@ class SignUp extends Component {
         if (res.status === 201) {
           const { token } = res.data;
           Auth.login(token);
-          this.props.history.push('/root');
+          this.props.history.push('/root/home');
         }
       })
 
