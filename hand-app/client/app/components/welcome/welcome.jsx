@@ -4,7 +4,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import WelcomeHeader from './welcome_header';
 import Map from './map';
 import About from './about';
-import News from './news';
 import Contact from './contact';
 import Error404 from '../errors/404';
 import '../../assets/styles/welcome.css';
@@ -22,7 +21,6 @@ const Welcome = () => (
             <Route exact path="/map" component={Map} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/news" component={News} />
             <Route component={Error404} />
           </Switch>
         </Col>

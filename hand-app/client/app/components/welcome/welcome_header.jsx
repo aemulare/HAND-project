@@ -20,14 +20,14 @@ const WelcomeHeader = () => (
         <LinkContainer to="/about" >
           <NavItem eventKey={2}>About</NavItem>
         </LinkContainer>
-        <LinkContainer to="/news" >
-          <NavItem eventKey={3}>News</NavItem>
-        </LinkContainer>
         <LinkContainer to="/contact" >
-          <NavItem eventKey={4}>Contact</NavItem>
+          <NavItem eventKey={3}>Contact</NavItem>
         </LinkContainer>
         <LinkContainer to="/signin" >
-          <NavItem eventKey={5} className="btn btn-default btn-sm signin">Sign In</NavItem>
+          <NavItem eventKey={4} className="btn btn-default btn-sm signin">Sign In</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/signup" >
+          <NavItem eventKey={5} className="btn btn-default btn-sm signup">Sign Up</NavItem>
         </LinkContainer>
       </Nav>
     </Navbar.Collapse>

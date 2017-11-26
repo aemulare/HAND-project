@@ -41,12 +41,14 @@ button.toggle-welcome {
   margin-top: 30px;
 }
 
+.signup,
 .signin {
-  margin-top: 5px;
+  margin: 5px 5px 0 5px;
   height: 40px;
   background-color: transparent;
 }
 
+li.signup > a,
 li.signin > a {
   padding: 5px 15px;;
 }

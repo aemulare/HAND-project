@@ -1,7 +1,6 @@
 import React from 'react';
 import UserIcon from 'react-icons/lib/fa/user';
 import HomeIcon from 'react-icons/lib/fa/home';
-import NewsIcon from 'react-icons/lib/fa/newspaper-o';
 import AboutIcon from 'react-icons/lib/fa/info';
 import PolicyIcon from 'react-icons/lib/fa/gavel';
 import ContactIcon from 'react-icons/lib/fa/paper-plane-o';
@@ -13,7 +12,6 @@ const Menu = () => (
   <ul id="menu" className="sidebar-nav nav-pills nav-stacked">
     <MenuItem label="FirstName LastName" icon={UserIcon} active />
     <MenuItem label="Home" icon={HomeIcon} />
-    <MenuItem label="News" icon={NewsIcon} />
     <MenuItem label="About" icon={AboutIcon} />
     <MenuItem label="Policy" icon={PolicyIcon} />
     <MenuItem label="Contact" icon={ContactIcon} />
