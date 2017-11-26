@@ -8,7 +8,7 @@ const Header = () => (
   <Navbar className="no-margin">
     <Navbar.Header className="fixed-brand">
       <Navbar.Brand>
-        <Link to="/home">
+        <Link to="/root">
           <img src="img/hand_logo_rectangle.svg" alt="HAND logo" height="65px" />
         </Link>
       </Navbar.Brand>

@@ -27,7 +27,7 @@ MenuItem.propTypes = {
 
 MenuItem.defaultProps = {
   active: false,
-  path: '/home'
+  path: '/root'
 };
 
 export default MenuItem;
