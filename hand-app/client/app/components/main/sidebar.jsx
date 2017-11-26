@@ -1,9 +1,9 @@
 import React from 'react';
 import Menu from './menu';
-import '../../assets/styles/app.scss';
+import css from './styles/sidebar.scss';
 
 const Sidebar = () => (
-  <div id="sidebar-wrapper">
+  <div className={css.wrapper}>
     <Menu />
   </div>
 );

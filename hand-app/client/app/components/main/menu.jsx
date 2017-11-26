@@ -6,10 +6,10 @@ import PolicyIcon from 'react-icons/lib/fa/gavel';
 import ContactIcon from 'react-icons/lib/fa/paper-plane-o';
 import SignOutIcon from 'react-icons/lib/fa/sign-out';
 import MenuItem from './menu_item';
-import '../../assets/styles/app.scss';
+import css from './styles/sidebar.scss';
 
 const Menu = () => (
-  <ul id="menu" className="sidebar-nav nav-pills nav-stacked">
+  <ul id="menu" className={`nav-pills nav-stacked ${css.sidebar_nav}`}>
     <MenuItem label="FirstName LastName" icon={UserIcon} active />
     <MenuItem label="Home" icon={HomeIcon} />
     <MenuItem label="About" icon={AboutIcon} />
