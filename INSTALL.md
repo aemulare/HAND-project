@@ -14,7 +14,7 @@
     - Enter a command to see what users are installed ```\du```
     - Create new user: ```CREATE ROLE myusername WITH LOGIN PASSWORD 'mypassword';```
          - example ```CREATE ROLE joe WITH LOGIN PASSWORD 'pghand';```
-    - Add the CREATEDB permission to our new user to allow them to create databases ```ALTER ROLE username CREATEDB;```
+    - Add the CREATEDB permission to our new user to allow them to create databases ```ALTER ROLE username CREATEDB;``` (ex. ```ALTER ROLE joe CREATEDB;```)
     - See new user with right `Create DB` in the table of users: ```\du```
     - Quit psql ```\q```
 
