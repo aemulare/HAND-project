@@ -3,6 +3,7 @@ const passport = require('./config/passport');
 const auth = require('./controllers/auth');
 const posts = require('./controllers/posts');
 const refs = require('./controllers/references');
+// const users = require('./controllers/users');
 
 const requireJwt = passport.authenticate('jwt', { session: false });
 const requireLogin = passport.authenticate('local', { session: false });
@@ -20,6 +21,9 @@ module.exports = (app) => {
   api.post('/posts', requireJwt, posts.create);
   api.put('/posts/:postId', requireJwt, posts.update);
   api.delete('/posts/:postId', requireJwt, posts.destroy);
+
+  // Users routes
+  // api.get('/users/:userId', users.show);
 
 
   // References routes

@@ -35,7 +35,7 @@
 3. Run ```yarn``` to build a server side
 4. Create a database with command ```sequelize db:create```
 5. Run ```sequelize db:migrate``` to create database tables
-6. Run ```sequelize db:seed``` to fill the database with mock and reference data
+6. Run ```sequelize db:seed:all``` to fill the database with mock and reference data
 7. Run ```yarn server``` to start the back-end server (running on port 8000)
 
 **In the second tab**

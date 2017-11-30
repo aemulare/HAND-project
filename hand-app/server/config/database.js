@@ -14,7 +14,7 @@ const configure = settings =>
 
 module.exports = {
   development: configure({
-    database: 'hand_dev'
+    database: 'hand_development'
   }),
   test: configure({
     database: 'hand_test'

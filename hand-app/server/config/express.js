@@ -8,17 +8,10 @@ module.exports = (app, config) => {
   app.locals.ENV_DEVELOPMENT = env == 'development';
   /* eslint-enable no-param-reassign, eqeqeq */
 
-  app.use(cookieParser());
   app.use(express.static(`${config.root}/public`));
 
   // Configures sessions and passport.
-  app.use(session({
-    secret: 'xsaster',
-    resave: true,
-    saveUninitialized: true,
-  }));
   app.use(passport.initialize());
-  app.use(passport.session());
 
 
   const controllers = glob.sync(`${config.root}/app/controllers/*.js`);
