@@ -1,3 +1,5 @@
+const USState = require('./us_state');
+
 module.exports = (sequelize, DataTypes) => {
   const Address = sequelize.define('addresses', {
     addressLine1: {
@@ -17,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Address.associate = db => Address.belongsTo(db.countries);
-  Address.associate = db => Address.belongsTo(db.us_states);
+  Address.associate = db => Address.belongsTo(db.us_states, { as: 'state' });
 
   return Address;
 };
