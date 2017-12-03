@@ -18,8 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  Address.associate = db => Address.belongsTo(db.countries);
-  Address.associate = db => Address.belongsTo(db.us_states, { as: 'state' });
+  Address.associate = function(db) {
+    Address.belongsTo(db.countries, {as: 'country'});
+    Address.belongsTo(db.us_states, { as: 'state' });
+  }
+
 
   return Address;
 };

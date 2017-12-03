@@ -13,7 +13,6 @@ exports.index = (req, res) => {
 };
 
 
-
 // GET show
 exports.show = (req, res) => {
   const { userId } = req.params;
@@ -23,10 +22,9 @@ exports.show = (req, res) => {
       {
         model: db.addresses,
         include: [
-          {
-            model: db.us_states, as: 'state'
-          }
-        ]
+          { model: db.us_states, as: 'state' },
+          { model: db.countries, as: 'country' }
+        ],
       }
     ]
   })
@@ -53,54 +51,54 @@ exports.update = (req, res) => {
     lastName,
     dob,
     phone,
-    userpic,
-    address: {
-      addressLine1,
-      addressLine2,
-      city,
-      region,
-      postcode,
-    },
+    address
   } = req.body;
+  const { addressLine1, addressLine2, city, region, postcode } = address;
+  let updatedUser;
 
   db.users.findById(userId, {
-    include: [
-      {
-        model: db.addresses,
-        include: [
-          {
-            model: db.us_states, as: 'state'
-          }
-        ]
-      }
-    ]
+    include: [{ model: db.addresses }]
   })
-    .then((user, address) => {
-      if (user) {
-        user.update({
-          firstName,
-          middleName,
-          lastName,
-          dob,
-          phone,
-          userpic,
-          address: {
-            addressLine1,
-            addressLine2,
-            city,
-            region,
-            postcode
-          }
-        })
-          .then((updateduser) => {
-            res.send(updateduser);
-          });
-      } else {
-        res.status(404).json({ code: 404, message: 'User not found' });
+    .then((userInst) => {
+      if (!userInst) {
+        throw new Error('User not found');
       }
+      return userInst.update({
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        phone
+      });
+    })
+    .then((updatedInst) => {
+      updatedUser = updatedInst.get();
+      return updatedUser;
+    })
+    .then(user => db.addresses.findById(user.address.id))
+    .then((addressInst) => {
+      if (!addressInst) {
+        throw new Error('Address not found');
+      }
+      return addressInst.update({
+        addressLine1,
+        addressLine2,
+        city,
+        region,
+        postcode
+      });
+    })
+    .then((updatedAddressInst) => {
+      updatedUser.address = updatedAddressInst.get();
+      return updatedUser;
+    })
+    .then((user) => {
+      res.json(user);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ code: 500, message: 'Internal server error' });
+      const httpCode = err.code || 500;
+      const errorMessage = err.message || 'Internal server error';
+      res.status(httpCode).json({ code: httpCode, message: errorMessage });
     });
 };
