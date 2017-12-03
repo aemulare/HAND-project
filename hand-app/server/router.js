@@ -25,6 +25,7 @@ module.exports = (app) => {
   // Users routes
   api.get('/users', users.index);
   api.get('/users/:userId', users.show);
+  api.put('/users/:userId', users.update);
 
 
   // References routes

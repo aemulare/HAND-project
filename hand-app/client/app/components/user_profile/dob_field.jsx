@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import CalendarIcon from 'react-icons/lib/fa/calendar';
 
-const DateOfBirthField = ({ dateOfBirth, changeCallback }) => (
+const DateOfBirthField = ({ dateOfBirth, name, changeCallback }) => (
   <FormGroup>
     <ControlLabel>Date Of Birth</ControlLabel>
     <InputGroup>
       <FormControl
         type="date"
+        name={name}
         value={dateOfBirth}
         onChange={changeCallback}
       />
@@ -20,6 +21,7 @@ const DateOfBirthField = ({ dateOfBirth, changeCallback }) => (
 );
 
 DateOfBirthField.propTypes = {
+  name: PropTypes.string.isRequired,
   dateOfBirth: PropTypes.instanceOf(Date).isRequired,
   changeCallback: PropTypes.func.isRequired
 };
