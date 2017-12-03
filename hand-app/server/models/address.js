@@ -1,4 +1,3 @@
-const USState = require('./us_state');
 
 module.exports = (sequelize, DataTypes) => {
   const Address = sequelize.define('addresses', {
