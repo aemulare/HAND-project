@@ -40,8 +40,7 @@ class SignUp extends Component {
     client.post('signup', { email, password })
       .then((res) => {
         if (res.status === 201) {
-          const { token } = res.data;
-          Auth.login(token);
+          Auth.login(res.data);
           this.props.history.push('/root/home');
         }
       })

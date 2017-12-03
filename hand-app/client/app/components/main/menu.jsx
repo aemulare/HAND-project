@@ -7,7 +7,9 @@ import PolicyIcon from 'react-icons/lib/fa/gavel';
 import ContactIcon from 'react-icons/lib/fa/paper-plane-o';
 import SignOutIcon from 'react-icons/lib/fa/sign-out';
 import MenuItem from './menu_item';
+import Auth from '../../modules/auth';
 import css from './styles/sidebar.scss';
+
 
 const Menu = () => (
   <div className={css.menu_container}>
@@ -16,7 +18,7 @@ const Menu = () => (
         <Navbar.Brand />
       </Navbar.Header>
       <Nav>
-        <MenuItem label="FirstName LastName" icon={UserIcon} path="/root/profile" />
+        <MenuItem label={Auth.currentUserName()} icon={UserIcon} path="/root/profile" />
         <MenuItem label="Home" icon={HomeIcon} path="/root/home" />
         <MenuItem label="About" icon={AboutIcon} path="/root/about" />
         <MenuItem label="Policy" icon={PolicyIcon} path="/root/policy" />

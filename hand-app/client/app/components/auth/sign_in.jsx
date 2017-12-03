@@ -44,8 +44,7 @@ class SignIn extends Component {
     client.post('signin', { email, password })
       .then((res) => {
         if (res.status === 200) {
-          const { token } = res.data;
-          Auth.login(token);
+          Auth.login(res.data);
           this.props.history.push('/root/home');
         }
       })

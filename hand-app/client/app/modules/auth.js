@@ -1,20 +1,26 @@
+// user credentials contain user id, email and token
+
 class Auth {
   /**
    * Authenticates a user
-   * (saves a token in the local storage).
-   * @param {string} token
+   * (saves user credentials in the local storage).
+   * @param {string} credentials
    */
-  static login(token) {
-    localStorage.setItem('auth_token', token);
+  static login(credentials) {
+    localStorage.setItem('auth_token', credentials.token);
+    localStorage.setItem('email', credentials.user.email);
+    localStorage.setItem('id', credentials.user.id);
   }
 
 
   /**
    * Deauthenticates a user
-   * (removes a token from the local storage).
+   * (removes user credentials from the local storage).
    */
   static logout() {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('id');
   }
 
 
@@ -36,6 +42,14 @@ class Auth {
    */
   static token() {
     return localStorage.getItem('auth_token');
+  }
+
+
+  /**
+   * Returns a current authenticated user
+  */
+  static currentUserName() {
+    return localStorage.getItem('email');
   }
 }
 
