@@ -31,7 +31,8 @@ class UserProfile extends Component {
       postalCode: '',
       phone: '',
       email: '',
-      password: ''
+      password: '',
+      readOnly: true
     };
 
     this.handleUserProfile = this.handleUserProfile.bind(this);
@@ -230,7 +231,8 @@ class UserProfile extends Component {
       postalCode,
       phone,
       email,
-      password
+      password,
+      readOnly
     } = this.state;
 
 
@@ -242,13 +244,13 @@ class UserProfile extends Component {
             <Grid>
               <Row>
                 <Col sm={12} md={3} lg={3}>
-                  <FieldGroup type="text" label="First Name" value={firstName} name="firstName" changeCallback={this.handleFirstNameChanged} width={300} important />
-                  <FieldGroup type="text" label="Middle Name" value={middleName} name={middleName} changeCallback={this.handleMiddleNameChanged} />
-                  <FieldGroup type="text" label="Last Name" value={lastName} name={lastName} changeCallback={this.handleLastNameChanged} />
-                  <DateOfBirthField dateOfBirth={dateOfBirth} name={dateOfBirth} changeCallback={this.handleDateOfBirthChanged} />
-                  <FieldGroup type="text" label="Phone Number" value={phone} name={phone} changeCallback={this.handlePhoneChanged} />
-                  <FieldGroup type="email" label="Email" value={email} />
-                  <FieldGroup type="password" label="Password" value={password} />
+                  <FieldGroup type="text" label="First Name" value={firstName} name="firstName" changeCallback={this.handleFirstNameChanged} width={300} important disabled={readOnly} />
+                  <FieldGroup type="text" label="Middle Name" value={middleName} name={middleName} changeCallback={this.handleMiddleNameChanged} disabled={readOnly} />
+                  <FieldGroup type="text" label="Last Name" value={lastName} name={lastName} changeCallback={this.handleLastNameChanged} disabled={readOnly} />
+                  <DateOfBirthField dateOfBirth={dateOfBirth} name={dateOfBirth} changeCallback={this.handleDateOfBirthChanged} disabled={readOnly} />
+                  <FieldGroup type="text" label="Phone Number" value={phone} name={phone} changeCallback={this.handlePhoneChanged} disabled={readOnly} />
+                  <FieldGroup type="email" label="Email" value={email} disabled />
+                  <FieldGroup type="password" label="Password" value={password} disabled />
                 </Col>
 
                 <Col sm={12} md={5} lg={5}>
@@ -259,10 +261,11 @@ class UserProfile extends Component {
                     options={countries}
                     valueGetter={option => option.id}
                     onSelect={this.handleCountrySelect}
+                    disabled={readOnly}
                   />
-                  <FieldGroup type="text" label="Address Line 1" value={addressLine1} name={addressLine1} changeCallback={this.handleAddressLine1Changed} />
-                  <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} name={addressLine2} changeCallback={this.handleAddressLine2Changed} />
-                  <FieldGroup type="text" label="City" value={city} name={city} changeCallback={this.handleCityChanged} />
+                  <FieldGroup type="text" label="Address Line 1" value={addressLine1} name={addressLine1} changeCallback={this.handleAddressLine1Changed} disabled={readOnly} />
+                  <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} name={addressLine2} changeCallback={this.handleAddressLine2Changed} disabled={readOnly} />
+                  <FieldGroup type="text" label="City" value={city} name={city} changeCallback={this.handleCityChanged} disabled={readOnly} />
                   {
                     selectedCountry === 235 ?
                       <SelectField
@@ -272,10 +275,11 @@ class UserProfile extends Component {
                         options={usStates}
                         valueGetter={option => option.id}
                         onSelect={this.handleUsStateSelect}
+                        disabled={readOnly}
                       />
-                   : <FieldGroup type="text" label="Region / Province" value={region} name={region} changeCallback={this.handleRegionChanged} />
+                   : <FieldGroup type="text" label="Region / Province" value={region} name={region} changeCallback={this.handleRegionChanged} disabled={readOnly} />
                   }
-                  <FieldGroup type="text" label="Postal Code" value={postalCode} name={postalCode} changeCallback={this.handlePostalCodeChanged} />
+                  <FieldGroup type="text" label="Postal Code" value={postalCode} name={postalCode} changeCallback={this.handlePostalCodeChanged} disabled={readOnly} />
                 </Col>
 
                 <Col sm={12} md={2} lg={2}>
@@ -290,10 +294,10 @@ class UserProfile extends Component {
                     <Button className="btn btn-warning" id="edit">
                       Edit
                     </Button>
-                    <Button type="submit" className="btn btn-primary" id="save">
+                    <Button type="submit" className="btn btn-primary" id="save" disabled={readOnly}>
                       Save
                     </Button>
-                    <Button className="btn btn-default" id="cancel">
+                    <Button className="btn btn-default" id="cancel" disabled={readOnly}>
                       Cancel
                     </Button>
                   </ButtonToolbar>
