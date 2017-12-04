@@ -7,8 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  Offer.associate = db => Offer.belongsTo(db.users);
-  Offer.associate = db => Offer.belongsTo(db.resources);
-
+  Offer.associate = function(db) {
+    Offer.belongsTo(db.users);
+    Offer.belongsTo(db.resources);
+  }
+  
   return Offer;
 };

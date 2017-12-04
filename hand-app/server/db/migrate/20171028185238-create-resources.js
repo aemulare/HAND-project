@@ -22,7 +22,7 @@ module.exports = {
         key: 'id',
       },
     },
-    resource_count: {
+    quantity: {
       type: DataTypes.INTEGER,
     },
     created_at: {

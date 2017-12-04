@@ -18,7 +18,16 @@ exports.index = (req, res) => {
 exports.show = (req, res) => {
   const { postId } = req.params;
 
-  db.posts.findById(postId)
+  db.posts.findById(postId, {
+    include: [
+      {
+        model: db.resources,
+        include: [
+          { model: db.tags }
+        ]
+      }
+    ]
+  })
     .then((post) => {
       if (post) {
         res.json(post);
@@ -35,13 +44,19 @@ exports.show = (req, res) => {
 
 // POST create
 exports.create = (req, res) => {
-  const { title, description, userId } = req.body;
+  const { title, description, location, userId, resources } = req.body;
 
   db.posts.create({
     title,
     description,
+    location,
     isOpen: true,
-    user_id: userId
+    user_id: userId,
+    resources
+  }, {
+    include: [
+      { model: db.resources }
+    ]
   })
     .then((post) => {
       res.json(post);
@@ -56,7 +71,7 @@ exports.create = (req, res) => {
 // PUT update
 exports.update = (req, res) => {
   const { postId } = req.params;
-  const { title, description } = req.body;
+  const { title, description, location } = req.body;
 
   db.posts.findById(postId)
     .then((post) => {

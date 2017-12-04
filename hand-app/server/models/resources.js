@@ -1,10 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
   const Resource = sequelize.define('resources', {
-    resourceCount: { type: DataTypes.INTEGER, field: 'resource_count' },
+    quantity: { type: DataTypes.INTEGER },
   }, {
     underscored: true,
-    timestamps: false,
   });
+
+  Resource.associate = function(db) {
+    Resource.belongsTo(db.posts);
+    Resource.belongsTo(db.tags);
+  }
 
   return Resource;
 };

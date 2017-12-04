@@ -22,6 +22,10 @@ module.exports = {
       allowNull: false,
       type: DataTypes.STRING(2048),
     },
+    location: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
     is_open: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
