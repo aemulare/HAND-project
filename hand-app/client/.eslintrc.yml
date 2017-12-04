@@ -12,4 +12,5 @@ rules:
   react/forbid-prop-types: off
   import/no-named-as-default: off
   jsx-a11y/anchor-is-valid: off
+  import/no-dynamic-require: off
 

@@ -8,8 +8,9 @@ import SelectField from '../shared/select_field';
 import Userpic from '../shared/userpic';
 import FilePicker from '../shared/filepicker';
 import Auth from '../../modules/auth';
-import UserPicture from '../../assets/images/male_user_01.jpg';
+import UserPicture from '../../assets/images/userpics/user_01.jpg';
 
+// const UserPicture = () => `../../assets/images/userpics/user_0${Auth.currentUserId()}.jpg`;
 
 class UserProfile extends Component {
   constructor() {
