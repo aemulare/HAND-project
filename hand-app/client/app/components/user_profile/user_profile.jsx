@@ -35,7 +35,7 @@ class UserProfile extends Component {
       readOnly: true
     };
 
-    this.handleUserProfile = this.handleUserProfile.bind(this);
+    this.updateUserProfile = this.updateUserProfile.bind(this);
 
     this.handleCountrySelect = this.handleCountrySelect.bind(this);
     this.handleUsStateSelect = this.handleUsStateSelect.bind(this);
@@ -54,6 +54,7 @@ class UserProfile extends Component {
 
     this.editUserProfile = this.editUserProfile.bind(this);
     this.cancelEditUserProfile = this.cancelEditUserProfile.bind(this);
+    this.updateUserProfile = this.updateUserProfile.bind(this);
   }
 
 
@@ -124,7 +125,7 @@ class UserProfile extends Component {
   }
 
 
-  handleUserProfile(event) {
+  updateUserProfile(event) {
     event.preventDefault();
     const {
       selectedCountry,
@@ -133,7 +134,6 @@ class UserProfile extends Component {
       middleName,
       lastName,
       dateOfBirth,
-      userpic,
       addressLine1,
       addressLine2,
       city,
@@ -150,25 +150,27 @@ class UserProfile extends Component {
       headers: API_HEADERS
     });
 
-    client.put('users/', {
-      selectedCountry,
-      selectedUsState,
+    client.put(`users/${Auth.currentUserId()}`, {
       firstName,
       middleName,
       lastName,
       dateOfBirth,
-      userpic,
-      addressLine1,
-      addressLine2,
-      city,
-      region,
-      postalCode,
-      phone
+      address: {
+        addressLine1,
+        addressLine2,
+        city,
+        region,
+        postalCode,
+        phone,
+        country: selectedCountry,
+        state: selectedUsState
+      }
     })
       .then((res) => {
         if (res.status === 200) {
           console.log('User profile updated');
         }
+        this.setState({ readOnly: true });
       })
 
       .catch(error => console.log(error));
@@ -253,7 +255,7 @@ class UserProfile extends Component {
       <div>
         <br />
         <Panel width={800}>
-          <form onSubmit={this.handleUserProfile}>
+          <form onSubmit={this.updateUserProfile}>
             <Grid>
               <Row>
                 <Col sm={12} md={3} lg={3}>

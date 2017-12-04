@@ -53,7 +53,7 @@ exports.update = (req, res) => {
     phone,
     address
   } = req.body;
-  const { addressLine1, addressLine2, city, region, postcode } = address;
+  const { addressLine1, addressLine2, city, region, postcode, state, country } = address;
   let updatedUser;
 
   db.users.findById(userId, {
@@ -85,7 +85,9 @@ exports.update = (req, res) => {
         addressLine2,
         city,
         region,
-        postcode
+        postcode,
+        state_id: state,
+        country_id: country
       });
     })
     .then((updatedAddressInst) => {
