@@ -9,7 +9,8 @@ class Auth {
   static login(credentials) {
     localStorage.setItem('auth_token', credentials.token);
     localStorage.setItem('email', credentials.user.email);
-    localStorage.setItem('id', credentials.user.id);
+    localStorage.setItem('userid', credentials.user.id);
+    localStorage.setItem('username', credentials.user.fullName);
   }
 
 
@@ -20,7 +21,8 @@ class Auth {
   static logout() {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('email');
-    localStorage.removeItem('id');
+    localStorage.removeItem('userid');
+    localStorage.removeItem('username');
   }
 
 
@@ -46,10 +48,18 @@ class Auth {
 
 
   /**
-   * Returns a current authenticated user
+   * Returns the email address of the current authenticated user.
   */
   static currentUserName() {
-    return localStorage.getItem('email');
+    const userName = localStorage.getItem('username');
+    return userName.trim() || localStorage.getItem('email');
+  }
+
+  /**
+   * Returns the current user ID.
+   */
+  static currentUserId() {
+    return localStorage.getItem('userid');
   }
 }
 

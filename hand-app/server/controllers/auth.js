@@ -3,15 +3,36 @@ const db = require('../models');
 const config = require('../config/main');
 
 const generateToken = user => jwt.sign(user, config.secret, { expiresIn: 10800 });
-const setUserInfo = request => ({ id: request.id, email: request.email });
+const setUserInfo = (user) => {
+  const firstName = user.firstName || '';
+  const lastName = user.lastName || '';
+  let fullName = `${firstName} ${lastName}`;
+  fullName = fullName.trim() || user.email;
+  return {
+    id: user.id,
+    email: user.email,
+    fullName
+  };
+};
+
 
 
 exports.signin = (req, res) => {
-  const userInfo = setUserInfo(req.user);
-  res.status(200).json({
-    token: `JWT ${generateToken(userInfo)}`,
-    user: userInfo
-  });
+  const { email } = req.body;
+  db.users.findOne({
+    where: { email }
+  })
+    .then((user) => {
+      const userInfo = setUserInfo(user);
+      res.status(200).json({
+        token: `JWT ${generateToken(userInfo)}`,
+        user: userInfo
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).send({ error: 'Internal server error' });
+    });
 };
 
 
@@ -26,23 +47,23 @@ exports.signup = (req, res) => {
   }
 
   db.users.findOne({
-    where: { email },
+    where: { email }
   })
-    .then((existingUser) => {
-      if (existingUser) {
+    .then((user) => {
+      if (user) {
         return res.status(422).send({ error: 'That email address is already in use' });
       }
-      db.users.create({
+      return db.users.create({
         email,
         password,
-      })
-        .then((user) => {
-          const userInfo = setUserInfo(user);
-          return res.status(201).json({
-            token: `JWT ${generateToken(userInfo)}`,
-            user: userInfo
-          });
-        });
+      });
+    })
+    .then((user) => {
+      const userInfo = setUserInfo(user);
+      return res.status(201).json({
+        token: `JWT ${generateToken(userInfo)}`,
+        user: userInfo
+      });
     })
     .catch((err) => {
       console.log(err);
