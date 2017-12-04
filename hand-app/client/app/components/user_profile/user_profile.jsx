@@ -51,6 +51,9 @@ class UserProfile extends Component {
     this.handleRegionChanged = this.handleRegionChanged.bind(this);
     this.handlePostalCodeChanged = this.handlePostalCodeChanged.bind(this);
     this.handlePhoneChanged = this.handlePhoneChanged.bind(this);
+
+    this.editUserProfile = this.editUserProfile.bind(this);
+    this.cancelEditUserProfile = this.cancelEditUserProfile.bind(this);
   }
 
 
@@ -110,6 +113,16 @@ class UserProfile extends Component {
         console.log(error);
       });
   }
+
+  editUserProfile() {
+    this.setState({ readOnly: false });
+  }
+
+
+  cancelEditUserProfile() {
+    this.setState({ readOnly: true });
+  }
+
 
   handleUserProfile(event) {
     event.preventDefault();
@@ -291,13 +304,13 @@ class UserProfile extends Component {
               <Row>
                 <Col sm={12}>
                   <ButtonToolbar>
-                    <Button className="btn btn-warning" id="edit">
+                    <Button className="btn btn-warning" disabled={!readOnly} onClick={this.editUserProfile}>
                       Edit
                     </Button>
                     <Button type="submit" className="btn btn-primary" id="save" disabled={readOnly}>
                       Save
                     </Button>
-                    <Button className="btn btn-default" id="cancel" disabled={readOnly}>
+                    <Button className="btn btn-default" disabled={readOnly} onClick={this.cancelEditUserProfile}>
                       Cancel
                     </Button>
                   </ButtonToolbar>
