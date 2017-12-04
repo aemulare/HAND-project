@@ -56,6 +56,13 @@ exports.signup = (req, res) => {
       return db.users.create({
         email,
         password,
+        address: {
+          country_id: 235
+        }
+      }, {
+        include: [
+          { model: db.addresses }
+        ]
       });
     })
     .then((user) => {

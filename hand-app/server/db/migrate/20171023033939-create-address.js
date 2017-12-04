@@ -7,18 +7,15 @@ module.exports = {
       type: DataTypes.INTEGER,
     },
     address_line1: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     address_line2: {
       type: DataTypes.STRING,
     },
     city: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     region: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     state_id: {
@@ -29,7 +26,6 @@ module.exports = {
       },
     },
     postcode: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
     country_id: {
@@ -40,15 +36,7 @@ module.exports = {
         model: 'countries',
         key: 'id',
       },
-    },
-    created_at: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
-    updated_at: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
+    }
   }),
 
 

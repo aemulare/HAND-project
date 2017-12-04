@@ -154,13 +154,13 @@ class UserProfile extends Component {
       firstName,
       middleName,
       lastName,
-      dateOfBirth,
+      dob: dateOfBirth,
       address: {
         addressLine1,
         addressLine2,
         city,
         region,
-        postalCode,
+        postcode: postalCode,
         phone,
         country: selectedCountry,
         state: selectedUsState
