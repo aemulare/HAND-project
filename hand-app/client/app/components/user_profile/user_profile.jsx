@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button, ButtonToolbar, Panel } from 'react-bootstrap';
+import moment from 'moment';
 import axios from 'axios';
 import DateOfBirthField from './dob_field';
 import FieldGroup from '../shared/field_group';
@@ -15,13 +16,13 @@ class UserProfile extends Component {
     super();
     this.state = {
       countries: [],
-      selectedCountry: 'us',
+      selectedCountry: 235,
       usStates: [],
-      selectedUsState: '',
+      selectedUsState: null,
       firstName: '',
       middleName: '',
       lastName: '',
-      dateOfBirth: '1999-01-01',
+      dateOfBirth: moment().subtract(18, 'years').calendar(),
       userpic: '',
       addressLine1: '',
       addressLine2: '',
@@ -76,7 +77,32 @@ class UserProfile extends Component {
       .then((res) => {
         if (res.status === 200) {
           this.setState({ usStates: res.data });
-          console.log(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    client.get(`users/${Auth.currentUserId()}`, {})
+      .then((res) => {
+        if (res.status === 200) {
+          const { email, firstName, middleName, lastName, dob, phone, address } = res.data;
+          const { addressLine1, addressLine2, city, postcode, state_id, country_id } = address;
+          this.setState({
+            email,
+            password: 'RESTRICTED',
+            firstName,
+            middleName,
+            lastName,
+            dateOfBirth: moment(dob).format('YYYY-MM-DD'),
+            phone,
+            addressLine1,
+            addressLine2,
+            city,
+            postalCode: postcode,
+            selectedUsState: state_id,
+            selectedCountry: country_id
+          });
         }
       })
       .catch((error) => {
@@ -186,14 +212,6 @@ class UserProfile extends Component {
     this.setState({ phone: event.target.value });
   }
 
-  // handleUserInput(event) {
-  //   const { name } = event.target.name;
-  //   const { value } = event.target.value;
-  //   console.log(name);
-  //   this.setState({ [name]: value });
-  //   () => { this.validateField(name, value); });
-  // }
-
   render() {
     const {
       countries,
@@ -239,20 +257,20 @@ class UserProfile extends Component {
                     selectedValue={selectedCountry}
                     placeholder="Select your country"
                     options={countries}
-                    valueGetter={option => option.alpha2code}
+                    valueGetter={option => option.id}
                     onSelect={this.handleCountrySelect}
                   />
                   <FieldGroup type="text" label="Address Line 1" value={addressLine1} name={addressLine1} changeCallback={this.handleAddressLine1Changed} />
                   <FieldGroup type="text" label="Address Line 2 (optional)" value={addressLine2} name={addressLine2} changeCallback={this.handleAddressLine2Changed} />
                   <FieldGroup type="text" label="City" value={city} name={city} changeCallback={this.handleCityChanged} />
                   {
-                    selectedCountry === 'us' ?
+                    selectedCountry === 235 ?
                       <SelectField
                         label="State"
                         selectedValue={selectedUsState}
                         placeholder="Select your country"
                         options={usStates}
-                        valueGetter={option => option.code}
+                        valueGetter={option => option.id}
                         onSelect={this.handleUsStateSelect}
                       />
                    : <FieldGroup type="text" label="Region / Province" value={region} name={region} changeCallback={this.handleRegionChanged} />
