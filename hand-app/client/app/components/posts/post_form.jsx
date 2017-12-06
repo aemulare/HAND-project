@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Panel, ButtonToolbar, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import axios from 'axios';
+import Auth from '../../modules/auth';
 import FieldGroup from '../shared/field_group';
 
 
@@ -7,9 +9,16 @@ class PostForm extends Component {
   constructor() {
     super();
     this.state = {
+      userId: Auth.currentUserId(),
       title: '',
       description: '',
-      location: ''
+      location: '',
+      resources: [
+        {
+          tagId: 1,
+          quantity: 5
+        }
+      ]
     };
 
     this.handleNewPost = this.handleNewPost.bind(this);
@@ -21,9 +30,11 @@ class PostForm extends Component {
   handleNewPost(event) {
     event.preventDefault();
     const {
+      userId,
       title,
       description,
-      location
+      location,
+      resources
     } = this.state;
 
     const API_URL = 'http://localhost:8000/api/v1';
@@ -34,10 +45,12 @@ class PostForm extends Component {
       headers: API_HEADERS
     });
 
-    client.put('posts/new', {
+    client.post('posts/new', {
+      userId,
       title,
       description,
-      location
+      location,
+      resources
     })
       .then((res) => {
         if (res.status === 200) {

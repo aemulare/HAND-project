@@ -17,6 +17,7 @@ module.exports = {
     tag_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 1,
       references: {
         model: 'tags',
         key: 'id',
