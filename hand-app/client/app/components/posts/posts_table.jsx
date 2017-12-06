@@ -8,6 +8,7 @@ const TableRow = ({ row }) => (
 
   <tr>
     <td key={row.created_at}>{moment(row.created_at).format('MMMM Do YYYY') }</td>
+    <td key={row.location}>{row.location}</td>
     <td key={row.title}>{row.title}</td>
     <td key={row.description}>{row.description}</td>
     <td key={row.user_id}>{row.user_id}</td>
@@ -19,6 +20,7 @@ const PostsTable = ({ data }) => (
     <table>
       <tr>
         <th>Date</th>
+        <th>Location</th>
         <th>Title</th>
         <th>Description</th>
         <th>Author</th>

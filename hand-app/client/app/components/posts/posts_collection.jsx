@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, Glyphicon, ControlLabel } from 'react-bootstrap';
 import axios from 'axios';
-import PostsTable from './posts_table';
+import PostsContent from './posts_content';
 import Auth from '../../modules/auth';
 import './styles/table.scss';
-
-// Table data as a array of objects
-// const data = [
-//   { date: '11/23/2017', location: 'New York, NY', title: 'Help', author: 'John Doe', tags: 'food' },
-//   { date: '11/23/2017', location: 'New York, NY', title: 'Help', author: 'Mary Smith', tags: 'clothes' },
-//   { date: '10/23/2017', location: 'New York, NY', title: 'Help', author: 'Gary Smith', tags: 'shelter' }
-// ];
-
 
 class PostsCollection extends Component {
   constructor() {
@@ -68,7 +60,7 @@ class PostsCollection extends Component {
             <Glyphicon glyph="search" />
           </FormControl.Feedback>
         </FormGroup>
-        <PostsTable data={posts} />
+        <PostsContent data={posts} />
       </div>
     );
   }
