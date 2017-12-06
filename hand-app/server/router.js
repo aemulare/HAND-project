@@ -23,9 +23,9 @@ module.exports = (app) => {
   api.delete('/posts/:postId', requireJwt, posts.destroy);
 
   // Users routes
-  api.get('/users', users.index);
-  api.get('/users/:userId', users.show);
-  api.put('/users/:userId', users.update);
+  api.get('/users', requireJwt, users.index);
+  api.get('/users/:userId', requireJwt, users.show);
+  api.put('/users/:userId', requireJwt, users.update);
 
 
   // References routes
