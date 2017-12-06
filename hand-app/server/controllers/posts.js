@@ -4,7 +4,7 @@ const db = require('../models');
 // GET index
 exports.index = (req, res) => {
   db.posts.findAll({
-    include: [{// Notice `include` takes an ARRAY
+    include: [{
       model: db.users,
       attributes: ['firstName', 'lastName']
     }]

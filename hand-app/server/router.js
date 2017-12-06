@@ -18,7 +18,7 @@ module.exports = (app) => {
   // Posts routes
   api.get('/posts', requireJwt, posts.index);
   api.get('/posts/:postId', requireJwt, posts.show);
-  api.post('/posts', requireJwt, posts.create);
+  api.post('/posts/new', requireJwt, posts.create);
   api.put('/posts/:postId', requireJwt, posts.update);
   api.delete('/posts/:postId', requireJwt, posts.destroy);
 

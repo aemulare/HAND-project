@@ -4,6 +4,7 @@ import Breadcrumbs from './breadcrumbs';
 import UserProfile from '../user_profile/user_profile';
 import PublicUserProfile from '../user_profile/user_public_profile';
 import PostsCollection from '../posts/posts_collection';
+import PostForm from '../posts/post_form';
 import PrivateRoute from '../auth/private_route';
 import Error404 from '../errors/404';
 import About from '../welcome/about';
@@ -19,6 +20,7 @@ const Content = () => (
           <Breadcrumbs />
           <Switch>
             <PrivateRoute exact path="/root/profile" component={UserProfile} />
+            <PrivateRoute exact path="/root/posts/new" component={PostForm} />
             <PrivateRoute exact path="/root/member" component={PublicUserProfile} />
             <PrivateRoute exact path="/root/about" component={About} />
             <PrivateRoute exact path="/root/policy" component={Policy} />
