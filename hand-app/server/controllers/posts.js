@@ -4,10 +4,18 @@ const db = require('../models');
 // GET index
 exports.index = (req, res) => {
   db.posts.findAll({
-    include: [{
-      model: db.users,
-      attributes: ['firstName', 'lastName']
-    }]
+    include: [
+      {
+        model: db.users,
+        attributes: ['firstName', 'lastName']
+    },
+    {
+      model: db.resources,
+      include: [
+        { model: db.tags }
+      ]
+    }
+  ]
   })
     .then((posts) => {
       res.json(posts);
@@ -76,27 +84,53 @@ exports.create = (req, res) => {
 // PUT update
 exports.update = (req, res) => {
   const { postId } = req.params;
-  const { title, description, location } = req.body;
+  const { title, description, isOpen, location, resources = [] } = req.body;
+  let updatedPost;
+  let existingResources;
 
-  db.posts.findById(postId)
+  db.posts.findById(postId, {
+    include: [{ model: db.resources }]
+  })
     .then((post) => {
-      if (post) {
-        post.update({
-          title,
-          description,
-        })
-          .then((updatedPost) => {
-            res.send(updatedPost);
-          });
-      } else {
-        res.status(404).json({ code: 404, message: 'Post not found' });
+      if (!post) {
+        throw new Error('Post not found');
       }
+      existingResources = post.resources || [];
+      return post.update({
+        title,
+        description,
+        location,
+        isOpen
+      });
+    })
+    .then((post) => {
+      updatedPost = post.get();
+      return updatedPost;
+    })
+    .then(() => Promise.all(resources.map((resource) => {
+      const { quantity, tag_id } = resource;
+      const toUpdate = existingResources.find(r => r.tag_id === resource.tag_id);
+      if (toUpdate) {
+        return toUpdate.update({ quantity });
+      }
+      return db.resources.create({
+        quantity,
+        tag_id,
+        post_id: postId
+      });
+    })))
+    .then(() => db.posts.findById(postId, {
+      include: [{ model: db.resources }]
+    }))
+    .then((post) => {
+      res.json(post);
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json({ code: 500, message: 'Internal server error' });
     });
 };
+
 
 
 // DELETE destroy
