@@ -3,7 +3,12 @@ const db = require('../models');
 
 // GET index
 exports.index = (req, res) => {
-  db.posts.findAll()
+  db.posts.findAll({
+    include: [{// Notice `include` takes an ARRAY
+      model: db.users,
+      attributes: ['firstName', 'lastName']
+    }]
+  })
     .then((posts) => {
       res.json(posts);
     })

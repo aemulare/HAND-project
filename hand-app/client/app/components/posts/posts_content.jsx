@@ -6,7 +6,7 @@ const moment = require('moment');
 
 
 const PostPanel = ({ post }) => (
-  <Panel header={`${moment(post.created_at).format('MM/DD/YYYY')}, ${post.location},  published by: ${post.user_id}`} bsStyle="info">
+  <Panel header={`${moment(post.created_at).format('MM/DD/YYYY')} ${post.location},  published by: ${post.user.firstName} ${post.user.lastName}`} bsStyle="info">
     <h4>
       <strong>{post.title}</strong>
     </h4>
