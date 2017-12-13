@@ -4,7 +4,7 @@ import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstra
 
 const SelectField = (
   {
-    label, selectedValue, placeholder, options, onSelect, disabled, valueGetter
+    label, selectedValue, placeholder, options, onSelect, valueGetter
   }
 ) => (
   <FormGroup>
@@ -14,7 +14,6 @@ const SelectField = (
         componentClass="select"
         placeholder={placeholder}
         value={selectedValue}
-        disabled={disabled}
         onChange={onSelect}
       >
         {
@@ -32,11 +31,10 @@ SelectField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onSelect: PropTypes.func.isRequired,
   valueGetter: PropTypes.func.isRequired,
-  disabled: PropTypes.bool
 };
 
-SelectField.defaultProps = {
-  disabled: false
-};
+// SelectField.defaultProps = {
+//   disabled: false
+// };
 
 export default SelectField;

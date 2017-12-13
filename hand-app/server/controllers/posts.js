@@ -15,7 +15,8 @@ exports.index = (req, res) => {
         { model: db.tags }
       ]
     }
-  ]
+  ],
+  order: [['updated_at', 'DESC']]
   })
     .then((posts) => {
       res.json(posts);

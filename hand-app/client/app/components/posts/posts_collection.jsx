@@ -26,7 +26,7 @@ class PostsCollection extends Component {
       headers: API_HEADERS
     });
 
-    client.get('posts', { })
+    client.get('posts', {})
       .then((res) => {
         if (res.status === 200) {
           this.setState({ posts: res.data });

@@ -26,9 +26,7 @@ const Welcome = () => (
         </Col>
       </Row>
     </Grid>
-    <footer className="text-center">
-      footer
-    </footer>
+    <footer className="text-center" />
   </div>
 );
 

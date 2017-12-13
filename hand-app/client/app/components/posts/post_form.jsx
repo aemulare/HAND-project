@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Row, Col, Panel, ButtonToolbar, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import Auth from '../../modules/auth';
@@ -15,7 +16,7 @@ class PostForm extends Component {
       location: '',
       resources: [
         {
-          tagId: 1,
+          tag_id: 1,
           quantity: 5
         }
       ]
@@ -25,6 +26,7 @@ class PostForm extends Component {
     this.handleTitleChanged = this.handleTitleChanged.bind(this);
     this.handleDescriptionChanged = this.handleDescriptionChanged.bind(this);
     this.handleLocationChanged = this.handleLocationChanged.bind(this);
+    this.cancelPost = this.cancelPost.bind(this);
   }
 
   handleNewPost(event) {
@@ -55,6 +57,7 @@ class PostForm extends Component {
       .then((res) => {
         if (res.status === 200) {
           console.log('New post created');
+          this.props.history.push('/root/home');
         }
       })
       .catch(error => console.log(error));
@@ -70,6 +73,10 @@ class PostForm extends Component {
 
   handleLocationChanged(event) {
     this.setState({ location: event.target.value });
+  }
+
+  cancelPost() {
+    this.props.history.push('/root/home');
   }
 
   render() {
@@ -97,13 +104,10 @@ class PostForm extends Component {
               <Row>
                 <Col sm={12}>
                   <ButtonToolbar>
-                    <Button className="btn btn-warning" >
-                      Edit
-                    </Button>
                     <Button type="submit" className="btn btn-primary" id="save" >
-                      Save
+                      Post
                     </Button>
-                    <Button className="btn btn-default">
+                    <Button className="btn btn-default" onClick={this.cancelPost}>
                       Cancel
                     </Button>
                   </ButtonToolbar>
@@ -116,5 +120,9 @@ class PostForm extends Component {
     );
   }
 }
+
+PostForm.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default PostForm;
